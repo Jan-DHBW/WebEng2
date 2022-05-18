@@ -1,2 +1,2 @@
-<?php `git pull`;
-echo `pwd`;
+<?php
+exec('cd ..; git pull');
