@@ -13,9 +13,7 @@ class LoginController extends AbstractController
     */
     public function login(): Response
     {
-
-            // get the login error if there is one
-        
+        // get the login error if there is one
         return $this->render('login.html.twig', [
         ]);
     }
