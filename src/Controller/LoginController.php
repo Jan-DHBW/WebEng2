@@ -10,11 +10,14 @@ class LoginController extends AbstractController
     /**
     * @Route("/login")
     */
-    public function index(): Response
+    public function login(AuthenticationUtils $authenticationUtils):
     {
-        $number = random_int(0, 100);
-        return $this->render('login.html.twig', [
-            //'number' => $number,
-        ]);
-    }
+
+            // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        
+        return $this->render('login.html.twig', array[
+            'last_username' => $lastUsername,
+            'error'         => $error,
+        ]); 
 }
