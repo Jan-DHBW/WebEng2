@@ -10,7 +10,7 @@ class LoginController extends AbstractController
     /**
     * @Route("/login")
     */
-    public function login(AuthenticationUtils $authenticationUtils):
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
 
             // get the login error if there is one
