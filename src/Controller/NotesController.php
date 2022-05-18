@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class NotesController extends AbstractController
 {
     /**
-    * @Route("/number")
+    * @Route("/notes")
     */
     public function index(): Response
     {
