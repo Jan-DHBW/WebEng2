@@ -1,5 +1,5 @@
 <?php
-// src/Controller/LuckyController.php
+// src/Controller/number.php
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +14,7 @@ class LuckyController extends AbstractController
         /*return new Response(
             '<html><body>Lucky number: '.$number.'</body></html>'
         );*/
-        return $this->render('notes/note.html.twig', [
+        return $this->render('notes/notes.html.twig', [
             'number' => $number,
         ]);
     }
