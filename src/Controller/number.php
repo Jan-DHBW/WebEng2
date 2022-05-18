@@ -13,7 +13,7 @@ class LuckyController
         /*return new Response(
             '<html><body>Lucky number: '.$number.'</body></html>'
         );*/
-        return $this->render('lucky/note.html.twig', [
+        return $this->render('notes/note.html.twig', [
             'number' => $number,
         ]);
     }
