@@ -2,23 +2,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Notes</h1>
-
-    <table class=\"table\">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Created</th>
-                <th>Updated</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
-    <ul>
-    </ul>
+<div id="topBar"></div>
+<div id="main">
+    <div id="content">
+        <div id="editor">
+            <textarea id="textEditor"></textarea>
+        </div>
+        <div id="dragBar"></div>
+        <div id="preview"></div>
+    </div>
+    <div id="sideBar">
+        <ul class="categories">
+            <li class="category">
+                <span class="categoryTitle">Kategorie 1</span>
+                <ul class="subCategories">
+                    <li>
+                        <span>Test1.1</span>
+                    </li>
+                    <li>
+                        <span>Test1.2</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="category">
+                <span class="categoryTitle">Kategorie 2</span>
+                <ul class="subCategories">
+                    <li>
+                        <span>Test2.1</span>
+                    </li>
+                    <li>
+                        <span>Test2.2</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    // if editor changes, update preview
+    $("#textEditor").on("input", function () {
+        $("#preview").html(marked.parse($("#textEditor").val()));
+    });
+</script>
 {% endblock %}
