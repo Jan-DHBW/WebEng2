@@ -1,6 +1,8 @@
 # config/routes.yaml
 
-# the "app_lucky_number" route name is not important yet
-app_lucky_number:
-    path: /number
-    controller: App\Controller\LuckyController::number
+app_notes:
+    path: /notes
+    controller: App\Controller\NotesController::index
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::index
