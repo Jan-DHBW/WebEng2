@@ -5,26 +5,26 @@ namespace App\Entity;
 use App\Repository\InvitationsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity(repositoryClass: InvitationsRepository::class) */
+/** @ORM\Entity(repositoryClass= InvitationsRepository::class) */
 class Invitations
 {
 /**      
    * @ORM\Id
    * @ORM\GeneratedValue
-   * @ORM\Column(type: 'integer')
+   * @ORM\Column(type= 'integer')
  */
     private $id;
 /**
-  *  @ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations')
-  * @ORM\JoinColumn(nullable: false)
+  *  @ORM\ManyToOne(targetEntity= User::class, inversedBy: 'invitations')
+  * @ORM\JoinColumn(nullable= false)
 */  
     private $owner;
 
- /** @ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations') */
- /** @ORM\JoinColumn(nullable: false) */
+ /** @ORM\ManyToOne(targetEntity= User::class, inversedBy: 'invitations') */
+ /** @ORM\JoinColumn(nullable= false) */
     private $participant;
 
- /** @ORM\Column(type: 'boolean') */
+ /** @ORM\Column(type= 'boolean') */
     private $accepted;
 
     public function getId(): ?int
