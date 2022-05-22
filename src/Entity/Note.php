@@ -5,24 +5,25 @@ namespace App\Entity;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: NoteRepository::class)]
+/** @ORM\Entity(repositoryClass: NoteRepository::class) */
 class Note
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    /** @ORM\Id
+    * @ORM\GeneratedValue
+    * @ORM\Column(type: 'integer')
+    */
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+  /** @ORM\Column(type: 'string', length: 255) */
     private $title;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notes')]
+   /** @ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notes') */
     private $owner;
 
-    #[ORM\Column(type: 'text', nullable: true)]
+   /** @ORM\Column(type: 'text', nullable: true) */
     private $content;
 
-    #[ORM\ManyToOne(targetEntity: Category::class)]
+    /** @ORM\ManyToOne(targetEntity: Category::class) */
     private $category;
 
     public function getId(): ?int
