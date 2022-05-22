@@ -1,4 +1,4 @@
-var dragging = false;
+/*var dragging = false;
 $('#dragBar').mousedown(function(e){
    e.preventDefault();
    dragging = true;
@@ -28,7 +28,7 @@ $(document).mouseup(function(e){
        $(document).unbind('mousemove');
        dragging = false;
    }
-});
+});*/
 
 var toggler = $(".categoryTitle");
 // add click event to all toggler
