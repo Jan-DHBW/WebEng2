@@ -40,9 +40,13 @@
     </div>
 </div>
 <script>
-    // if editor changes, update preview
-    $("#textEditor").on("input", function () {
-        $("#preview").html(marked.parse($("#textEditor").val()));
+    // on page loaded
+    $(document).ready(function() {
+        // init editor
+        // if editor changes, update preview
+        $("#textEditor").on("input", function () {
+            $("#preview").html(marked.parse($("#textEditor").val()));
+        });
     });
 </script>
 {% endblock %}
