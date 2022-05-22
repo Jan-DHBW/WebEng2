@@ -3,6 +3,7 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -23,6 +24,13 @@ class NotesController extends AbstractController
     */
     public function sync(Request $request): Response
     {
+        // check if user is logged in
+        $session = new Session();
+        if (!$session->has('user')) {
+            return $this->json([
+                'error' => 'not logged in',
+            ]);
+        }
         // return the request as json
         return $this->json($request->request->all());
     }
