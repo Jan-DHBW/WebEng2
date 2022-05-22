@@ -7,36 +7,36 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity(repositoryClass: UserRepository::class) */
-/** @ORM\Table('name': '`user`') */
+/** @ORM\Entity(repositoryClass= UserRepository::class) */
+/** @ORM\Table(name= '`user`') */
 class User
 {
     /**
     * @ORM\Id
     * @ORM\GeneratedValue
-    * @ORM\Column(type: 'integer')
+    * @ORM\Column(type= 'integer')
     */
     private $id;
 
-    /** @ORM\Column(type: 'string', length: 255) */
+    /** @ORM\Column(type= 'string', length: 255) */
     private $mail;
 
-    /** @ORM\Column(type: 'string', length: 255) */
+    /** @ORM\Column(type= 'string', length: 255) */
     private $surname;
 
-    /** @ORM\Column(type: 'string', length: 255) */
+    /** @ORM\Column(type= 'string', length: 255) */
     private $lastname;
 
-    /** @ORM\Column(type: 'string', length: 255) */
+    /** @ORM\Column(type= 'string', length: 255) */
     private $passwordhash;
 
-    /** @ORM\OneToMany(mappedBy: 'owner', targetEntity: Note::class) */
+    /** @ORM\OneToMany(mappedBy= 'owner', targetEntity: Note::class) */
     private $notes;
 
-    /** @ORM\OneToMany(mappedBy: 'owner', targetEntity: Invitations::class) */
+    /** @ORM\OneToMany(mappedBy= 'owner', targetEntity: Invitations::class) */
     private $invitations;
 
-    /** @ORM\OneToMany(mappedBy: 'owner', targetEntity: Category::class, orphanRemoval: true) */
+    /** @ORM\OneToMany(mappedBy= 'owner', targetEntity: Category::class, orphanRemoval: true) */
     private $categories;
 
     public function __construct()
