@@ -14,16 +14,17 @@ class Invitations
    * @ORM\Column(type: 'integer')
  */
     private $id;
-
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations')]
-    #[ORM\JoinColumn(nullable: false)]
+/**
+  *  @ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations')
+  * @ORM\JoinColumn(nullable: false)
+*/  
     private $owner;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations')]
-    #[ORM\JoinColumn(nullable: false)]
+ /** @ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations') */
+ /** @ORM\JoinColumn(nullable: false) */
     private $participant;
 
-    #[ORM\Column(type: 'boolean')]
+ /** @ORM\Column(type: 'boolean') */
     private $accepted;
 
     public function getId(): ?int
