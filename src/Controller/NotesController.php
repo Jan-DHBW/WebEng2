@@ -16,4 +16,13 @@ class NotesController extends AbstractController
             //'number' => $number,
         ]);
     }
+    // ajax post request to sync notes
+    /**
+    * @Route("/notes/sync")
+    */
+    public function sync(Request $request): Response
+    {
+        // return the request as json
+        return $this->json($request->request->all());
+    }
 }

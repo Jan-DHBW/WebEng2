@@ -4,14 +4,14 @@
 {% block body %}
 <div id="topBar" class="p-3 mb-2 bg-success"></div>
 <div id="main" class="row">
-    <div id="content" class="col-sm row">
+    <div id="content" class="col-sm-8 row">
         <div id="editor" class="p-3 mb-2 bg-success col-sm">
             <textarea id="textEditor" class="col-sm"></textarea>
         </div>
         <div id="dragBar" class="p-3 mb-2 bg-danger col-sm"></div>
         <div id="preview" class="col-sm"></div>
     </div>
-    <div id="sideBar" class="col-sm">
+    <div id="sideBar" class="col-sm-4">
         <ul class="categories">
             <li class="category">
                 <span class="categoryTitle">Kategorie 1</span>
@@ -43,8 +43,19 @@
     $(document).ready(function() {
         // init editor
         // if editor changes, update preview
+        let nextSync = 0;
         $("#textEditor").on("input", function () {
             $("#preview").html(marked.parse($("#textEditor").val()));
+            if (nextSync < Date.now()) {
+                nextSync = Date.now() + 1000;
+                $.ajax({
+                    url: "/notes/sync",
+                    type: "POST",
+                    data: {
+                        "content": $("#textEditor").val(),
+                    }
+                });
+            }
         });
     });
 </script>
