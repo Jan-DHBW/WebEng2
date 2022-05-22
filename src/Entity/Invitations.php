@@ -5,12 +5,14 @@ namespace App\Entity;
 use App\Repository\InvitationsRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: InvitationsRepository::class)]
+/** @ORM\Entity(repositoryClass: InvitationsRepository::class) */
 class Invitations
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+/**      
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @ORM\Column(type: 'integer')
+ */
     private $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'invitations')]
