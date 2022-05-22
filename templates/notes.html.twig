@@ -1,0 +1,64 @@
+{# templates/notes.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="topBar" class="p-3 mb-2 bg-success"></div>
+<div id="main" class="row text-wrap">
+    <div id="content" class="col-sm-10 row text-wrap">
+        <div id="editor" class="col-md text-wrap">
+            <textarea id="textEditor"></textarea>
+        </div>
+        <div id="dragBar" class="p-3 mb-2 bg-danger col-1"></div>
+        <div id="preview" class="p-3 mb-2 bg-success col-md-auto text-truncate" style="overflow-wrap:break-word;"></div>
+    </div>
+    <div id="sideBar" class="col-sm-1">
+        <ul class="categories">
+            <li class="category">
+                <span class="categoryTitle">Kategorie 1</span>
+                <ul class="subCategories">
+                    <li>
+                        <span>Test1.1</span>
+                    </li>
+                    <li>
+                        <span>Test1.2</span>
+                    </li>
+                </ul>
+            </li>
+            <li class="category">
+                <span class="categoryTitle">Kategorie 2</span>
+                <ul class="subCategories">
+                    <li>
+                        <span>Test2.1</span>
+                    </li>
+                    <li>
+                        <span>Test2.2</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    // on page loaded
+    $(document).ready(function() {
+        // init editor
+        // if editor changes, update preview
+        let nextSync = 0;
+        $("#textEditor").on("input", function () {
+            $("#preview").html(marked.parse($("#textEditor").val()));
+            if (nextSync < Date.now()) {
+                nextSync = Date.now() + 1000;
+                $.ajax({
+                    url: "/notes/sync",
+                    type: "POST",
+                    data: {
+                        "content": $("#textEditor").val(),
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script src="notes.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+{% endblock %}
