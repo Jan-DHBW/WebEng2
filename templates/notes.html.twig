@@ -2,14 +2,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div id="topBar" class="p-3 mb-2 bg-primary "></div>
-<div id="main" class="row container-fluid vh-100">
+<div id="topBar" class="p-3 mb-2 bg-primary"></div>
+<div id="main" class="row container-fluid h-100">
     <div id="content" class="col-sm-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="p-3 w-100 h-100 bg-dark text-white"></textarea>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark text-white"></textarea>
         </div>
         <!--<div id="dragBar" class="h-100"></div>-->
-        <div id="preview" class="p-3 mb-2 bg-dark col-md h-100 w-50 text-white" style="overflow-wrap:break-word;"></div>
+        <div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50 text-white" style="overflow-wrap:break-word;"></div>
     </div>
     <div id="sideBar" class="col-sm-1">
         <ul class="categories">
