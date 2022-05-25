@@ -35,6 +35,12 @@
             $("#preview").html(marked.parse($("#textEditor").val()));
             if (nextSync < Date.now()) {
                 nextSync = Date.now() + 1000;
+                // create spinner-border text-primary and add to #topBar
+                // remove spinner-border text-primary after 1 second
+                $("#topBar").html('<div class="spinner-border text-primary" role="status"><span class="sr-only">Uploading...</span></div>');
+                setTimeout(function() {
+                    $("#topBar").html("");
+                }, 1000);
                 $.ajax({
                     url: "/notes/sync",
                     type: "POST",
