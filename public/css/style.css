@@ -8,9 +8,6 @@ html{
     overflow-y: scroll;
     margin-bottom: 25px;
 }
-.force-overflow {
-    min-height: 450px;
-}
 
 .scrollbar-primary::-webkit-scrollbar {
     width: 12px;
