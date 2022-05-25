@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/login", name: 'login')
+     * @Route("/login", name: "login")
      * 
      */
     public function index(AuthenticationUtils $authenticationUtils): Response
@@ -19,7 +19,7 @@ class LoginController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('index.html.twig', [
+        return $this->render('login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
         ]);
