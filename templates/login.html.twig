@@ -5,12 +5,12 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}#}
 
-<form action="/login" method="post">
+<form action="{{ path('login') }}" method="post">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="_username">
+    <input type="text" id="username" name="_username" value="{{ last_username }}" />
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="_password" />
 
     {#
         If you want to control the URL the user
@@ -18,6 +18,5 @@
         <input type="hidden" name="_target_path" value="/account" />
     #}
 
-    <button type="submit">Anmelden</button>
+    <button type="submit">login</button>
 </form>
-
