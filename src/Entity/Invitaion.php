@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\InvitationsRepository;
+use App\Repository\InvitaionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=InvitationsRepository::class)
+ * @ORM\Entity(repositoryClass=InvitaionRepository::class)
  */
-class Invitations
+class Invitaion
 {
     /**
      * @ORM\Id
@@ -18,19 +20,19 @@ class Invitations
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invitaions")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Note::class)
+     * @ORM\OneToOne(targetEntity=Note::class, cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invitedToNotes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="invitedto")
      */
     private $invitee;
 
@@ -38,6 +40,11 @@ class Invitations
      * @ORM\Column(type="boolean")
      */
     private $accepted;
+
+    public function __construct()
+    {
+        $this->invitee = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,21 +68,33 @@ class Invitations
         return $this->note;
     }
 
-    public function setNote(?Note $note): self
+    public function setNote(Note $note): self
     {
         $this->note = $note;
 
         return $this;
     }
 
-    public function getInvitee(): ?User
+    /**
+     * @return Collection<int, User>
+     */
+    public function getInvitee(): Collection
     {
         return $this->invitee;
     }
 
-    public function setInvitee(?User $invitee): self
+    public function addInvitee(User $invitee): self
     {
-        $this->invitee = $invitee;
+        if (!$this->invitee->contains($invitee)) {
+            $this->invitee[] = $invitee;
+        }
+
+        return $this;
+    }
+
+    public function removeInvitee(User $invitee): self
+    {
+        $this->invitee->removeElement($invitee);
 
         return $this;
     }

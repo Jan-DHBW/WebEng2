@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Invitations;
+use App\Entity\Invitaion;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Invitations>
+ * @extends ServiceEntityRepository<Invitaion>
  *
- * @method Invitations|null find($id, $lockMode = null, $lockVersion = null)
- * @method Invitations|null findOneBy(array $criteria, array $orderBy = null)
- * @method Invitations[]    findAll()
- * @method Invitations[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Invitaion|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Invitaion|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Invitaion[]    findAll()
+ * @method Invitaion[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class InvitationsRepository extends ServiceEntityRepository
+class InvitaionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Invitations::class);
+        parent::__construct($registry, Invitaion::class);
     }
 
-    public function add(Invitations $entity, bool $flush = false): void
+    public function add(Invitaion $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class InvitationsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Invitations $entity, bool $flush = false): void
+    public function remove(Invitaion $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class InvitationsRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Invitations[] Returns an array of Invitations objects
+//     * @return Invitaion[] Returns an array of Invitaion objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class InvitationsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Invitations
+//    public function findOneBySomeField($value): ?Invitaion
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')
