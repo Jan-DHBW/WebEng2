@@ -12,18 +12,21 @@
         <div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word;"></div>
     </div>
     <div id="sideBar" class="col overflow-auto scrollbar scrollbar-primary" style="overflow-y: scroll; max-height:90vh;">
-        {% for i in 0..7 %}
-            <ul class="list-group mb-2">
-            <a href="#" class="list-group-item list-group-item-action text-white disabled active">Kategorie {{ i }}</a>
-            {% for j in 0..3 %}
-                <a href={{'/notes/' ~ i ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
+        <div>
+            {% for i in 0..7 %}
+                <ul class="list-group mb-2">
+                <a href="#" class="list-group-item list-group-item-action text-white disabled active">Kategorie {{ i }}</a>
+                {% for j in 0..3 %}
+                    <a href={{'/notes/' ~ i ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
+                {% endfor %}
+                </ul>
             {% endfor %}
-            </ul>
-        {% endfor %}
+        </div>
+        <div> 
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary">Primary</button>
+        </div>
     </div>
-    <!--<div class="spinner-border text-success" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>-->
 </div>
 <script>
     // on page loaded
