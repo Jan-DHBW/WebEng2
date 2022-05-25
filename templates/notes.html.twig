@@ -42,9 +42,9 @@
                 nextSync = Date.now() + 1000;
                 // create spinner-border text-primary and add to #topBar
                 // remove spinner-border text-primary after 1 second
-                $("#topBar").html('<div class="spinner-border text-dark" role="status"></div>');
+                $("#topBar").html('<div class="spinner-border-sm text-dark" role="status"></div>');
                 setTimeout(function() {
-                    //$("#topBar").html("");
+                    $("#topBar").html("");
                 }, 1000);
                 $.ajax({
                     url: "/notes/sync",
