@@ -11,8 +11,9 @@ doctrine:
         auto_mapping: true
         mappings:
             App:
+                type: annotation
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
+                dir: '%kernel.project_dir%/src/Entity/' 
                 prefix: 'App\Entity'
                 alias: App
 
