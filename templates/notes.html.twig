@@ -23,8 +23,8 @@
             {% endfor %}
         </div>
         <div> 
-            <button type="button" class="btn btn-success">Erstellen</button>
-            <button type="button" class="btn btn-secondary">Bearbeiten</button>
+            <button type="button" class="btn btn-success disabled">Erstellen</button>
+            <button type="button" class="btn btn-secondary disabled">Bearbeiten</button>
         </div>
     </div>
 </div>
@@ -53,6 +53,14 @@
                 });
             }
         });
+
+        // if a page is clicked, activate buttons
+        $(".list-group-item").click(function() {
+            $(".list-group-item").removeClass("active");
+            $(this).addClass("active");
+            $(".btn").removeClass("disabled");
+        });
+
     });
 </script>
 <script src="notes.js" type="text/javascript"></script>
