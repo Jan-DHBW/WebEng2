@@ -15,8 +15,8 @@
         {% for i in 0..7 %}
             <ul class="list-group">
             <a href="#" class="list-group-item list-group-item-action text-white disabled active">Kategorie {{ i }}</a>
-            {% for i in 0..3 %}
-                <a href={{'/notes/' ~ i}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ i }}</a>
+            {% for j in 0..3 %}
+                <a href={{'/notes/' ~ i ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
             {% endfor %}
             </ul>
         {% endfor %}
