@@ -31,9 +31,10 @@ class Category
     private $owner;
 
     /**
-     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="category")
+     * @ORM\ManyToMany(targetEntity=Note::class, inversedBy="categories")
      */
     private $notes;
+
 
     public function __construct()
     {
@@ -81,7 +82,6 @@ class Category
     {
         if (!$this->notes->contains($note)) {
             $this->notes[] = $note;
-            $note->setCategory($this);
         }
 
         return $this;
@@ -89,12 +89,7 @@ class Category
 
     public function removeNote(Note $note): self
     {
-        if ($this->notes->removeElement($note)) {
-            // set the owning side to null (unless already changed)
-            if ($note->getCategory() === $this) {
-                $note->setCategory(null);
-            }
-        }
+        $this->notes->removeElement($note);
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,7 +25,7 @@ class Note
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="privnotes")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
@@ -37,6 +39,16 @@ class Note
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="notes")
      */
     private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="notes")
+     */
+    private $categories;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +99,33 @@ class Note
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->addNote($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->removeElement($category)) {
+            $category->removeNote($this);
+        }
 
         return $this;
     }
