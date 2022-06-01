@@ -1,0 +1,128 @@
+/*
+<div id="topBar"></div>
+<div id="main">
+    <div id="sideBar"></div>
+    <div id="content">
+        <div id="editor">
+            <textarea id="textEditor"></textarea>
+        </div>
+        <div id="dragBar"></div>
+        <div id="preview"></div>
+    </div>
+</div>
+*/
+
+html{
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #2e2e2e;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+}
+
+#topBar {
+    background-color: #62006f;
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#main {
+    height: 90%;
+    width: 100%;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sideBar {
+    background-color: #484848;
+    height: 100%;
+    width: 20%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+#content {
+    height: 100%;
+    width: 80%;
+    position: relative;
+    /* make flex-direction: column; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*make editor and preview side by side*/
+
+#editor {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 10px;
+}
+
+#textEditor {
+    background-color: #2e2e2e;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+}
+
+
+#dragBar{
+    background-color: #62006f;
+    height: 100%;
+    width: 4px;
+    position: relative;
+    float: right;
+    top: 0;
+    left: 0;
+    cursor: col-resize;
+}
+
+#preview {
+    width: 50%;
+    height: auto;
+    padding: 10px;
+    overflow-wrap: break-word;
+}
+
+.categories {
+    list-style-type: none;
+    margin: 0;
+    padding: 2px;
+    overflow: hidden;
+    background-color: #8d8d8d;
+    color: rgb(255, 255, 255);
+    width: 100%;
+}
+
+.subCategories {
+    list-style-type: none;
+    background-color: #626262;
+    width: 100%;
+}
