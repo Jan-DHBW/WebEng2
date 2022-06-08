@@ -2,7 +2,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div id="topBar" class="p-3 mb-2 bg-primary"></div>
+<div id="topBar" class="p-3 mb-2 bg-primary">
+    <div id="topBarLoadingSpinner" style="visibility: hidden;" class="spinner-border spinner-border-sm text-dark m-0" role="status"></div>
+</div>
 <div id="main" class="row container-fluid h-100 text-white">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
@@ -40,11 +42,14 @@
             $("#preview").html(marked.parse($("#textEditor").val()));
             if (nextSync < Date.now()) {
                 nextSync = Date.now() + 1000;
+                // make "topBarLoadingSpinner" visible
+                $("#topBarLoadingSpinner").css("visibility", "visible");
                 // create spinner-border text-primary and add to #topBar
                 // remove spinner-border text-primary after 1 second
-                $("#topBar").html('<div class="spinner-border spinner-border-sm text-dark m-0" role="status"></div>');
+                //$("#topBar").html('<div class="spinner-border spinner-border-sm text-dark m-0" role="status"></div>');
                 setTimeout(function() {
-                    $("#topBar").html("");
+                    // hide "topBarLoadingSpinner"
+                    $("#topBarLoadingSpinner").css("visibility", "hidden");
                 }, 1000);
                 $.ajax({
                     url: "/notes/sync",
