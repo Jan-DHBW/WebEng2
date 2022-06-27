@@ -31,7 +31,7 @@ class NewNoteController extends AbstractController{
             // do anything else you need here, like send an email
             return $this->redirectToRoute('/notes');
         }
-        return $this->render('newnote.html.twig', [
+        return $this->render('login.html.twig', [
             'form' => $form->createView(),
             'categories' => $categories,
         ]);
