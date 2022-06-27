@@ -26,6 +26,7 @@ class NewNoteController extends AbstractController{
         $form = $this->createForm(NewNoteFormType::class, $note);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $note->setOwner($user);
             $note->setContent('');
             $entityManager->persist($note);
             $entityManager->flush();
