@@ -20,6 +20,12 @@ class NewNoteFormType extends AbstractType{
 
         $builder
             ->add('title')
+            ->add('Catgory', ChoiceType::class, [
+                'choices' => $options['categories'],
+                'choice_label' => function($category){
+                    return $category->getName();
+                }
+            ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
