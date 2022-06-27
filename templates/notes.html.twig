@@ -16,12 +16,12 @@
         <div class="col overflow-auto scrollbar scrollbar-primary" style="overflow-y: scroll; max-height:80vh;">
             {% for category in notes|keys %}
                 <ul class="list-group mb-2" >
-                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ category }}" role="button" aria-expanded="false" aria-controls="category_{{ category }}">
-                        Kategorie {{ category }}
+                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ category }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
+                        {{ category }}
                     </a>
-                    <div class="collapse" id="category_{{ category }}">
+                    <div class="collapse" id="category_{{ loop.index0 }}">
                         {% for j in 1..3 %}
-                            <!--<a href={{'/notes/' ~ category ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>-->
+                            <!--<a href={{'/notes/' ~ loop.parent.index0 ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>-->
                             <a href='#' class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
                         {% endfor %}
                     </div>
