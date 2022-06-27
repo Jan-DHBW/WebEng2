@@ -16,19 +16,10 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Doctrine\ORM\EntityManagerInterface;
 
 class NewNoteFormType extends AbstractType{
-    public function buildForm(FormBuilderInterface $builder, array $options, EntityManagerInterface $entityManager){
+    public function buildForm(FormBuilderInterface $builder, array $options){
 
-        $user = $this->getUser();
-        $categories = $user->getCategories();
         $builder
             ->add('title')
-            ->add('Category', ChoiceType::class, [
-                'choices' => $categories,
-                'choice_label' => 'name',
-                'choice_value' => 'id',
-                'placeholder' => 'Choose a category',
-                'required' => true,
-            ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
