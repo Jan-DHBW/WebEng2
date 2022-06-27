@@ -14,7 +14,7 @@
     </div>
     <div id="sideBar" class="col row">
         <div class="col overflow-auto scrollbar scrollbar-primary" style="overflow-y: scroll; max-height:80vh;">
-            {% for category in notes %}
+            {% for category in notes|keys %}
                 <ul class="list-group mb-2" >
                     <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ category }}" role="button" aria-expanded="false" aria-controls="category_{{ category }}">
                         Kategorie {{ category }}
