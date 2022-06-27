@@ -16,7 +16,7 @@ use App\Entity\Invitaion;
 class NotesController extends AbstractController
 {
     /**
-    * @Route("/notes/{uid}", name="notes")
+    * @Route("/notes", name="notes")
     */
     public function index(ManagerRegistry $doctrine, int $uid): Response
     {
