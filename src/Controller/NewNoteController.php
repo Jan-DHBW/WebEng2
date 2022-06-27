@@ -5,7 +5,6 @@ use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\Invitation;
-use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
