@@ -23,7 +23,6 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $
         $notes = [
             'Categorie 1' => [
                 'Note 1',
