@@ -20,7 +20,7 @@ class NewNoteFormType extends AbstractType{
         $note = array_shift($options);
         $builder
             ->add('title')
-            ->add('Catgory', ChoiceType::class, ['choices' => $this->options])
+            ->add('Catgory', ChoiceType::class, ['choices' => $options])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
