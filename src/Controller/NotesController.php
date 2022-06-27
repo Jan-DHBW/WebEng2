@@ -18,7 +18,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes", name="notes")
     */
-    public function index(ManagerRegistry $doctrine, int $uid): Response
+    public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
