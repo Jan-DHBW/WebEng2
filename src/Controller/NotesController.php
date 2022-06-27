@@ -14,8 +14,20 @@ class NotesController extends AbstractController
     */
     public function index(): Response
     {
+        $notes = [
+            'Categorie 1' => [
+                'Note 1',
+                'Note 2',
+                'Note 3',
+            ],
+            'Categorie 2' => [
+                'Note 4',
+                'Note 5',
+                'Note 6',
+            ],
+        ];
         return $this->render('notes.html.twig', [
-            //'number' => $number,
+            'notes' => $notes,
         ]);
     }
     // ajax post request to sync notes
