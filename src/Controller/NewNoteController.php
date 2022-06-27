@@ -23,7 +23,12 @@ class NewNoteController extends AbstractController{
         $user = $this->getUser();
         $categories = $user->getCategories();
         $note = new Note();
-        $form = $this->createForm(NewNoteFormType::class, $note);
+        $data = array();
+        array_push($data, $note);
+        foreach($categories as $category){
+            array_push($data, $category);
+        }
+        $form = $this->createForm(NewNoteFormType::class, $data);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $note->setOwner($user);

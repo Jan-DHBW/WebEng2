@@ -17,15 +17,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class NewNoteFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
-
+        $note = array_shift($options);
         $builder
             ->add('title')
-            ->add('Catgory', ChoiceType::class, [
-                'choices' => $options['categories'],
-                'choice_label' => function($category){
-                    return $category->getName();
-                }
-            ])
+            ->add('Catgory', ChoiceType::class, ['choices' => $this->options])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
