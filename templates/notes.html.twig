@@ -16,12 +16,17 @@
     <div id="sideBar" class="col row">
         <div class="col overflow-auto scrollbar scrollbar-primary" style="overflow-y: scroll; max-height:80vh;">
             {% for i in 0..7 %}
-                <ul class="list-group mb-2">
-                <a href="#" class="list-group-item list-group-item-action text-white disabled active">Kategorie {{ i }}</a>
-                {% for j in 0..3 %}
-                    <!--<a href={{'/notes/' ~ i ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>-->
-                    <a href='#' class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
-                {% endfor %}
+                <ul class="list-group mb-2" >
+                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ i }}" role="button" aria-expanded="false" aria-controls="category_{{ i }}">
+                        Kategorie {{ i }}
+                    </a>
+                    <div class="collapse" id="category_{{ i }}">
+                        {% for j in 0..3 %}
+                            <!--<a href={{'/notes/' ~ i ~ '/' ~ j}} class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>-->
+                            <a href='#' class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
+                            <a href='#' class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
+                        {% endfor %}
+                    </div>
                 </ul>
             {% endfor %}
         </div>
@@ -64,6 +69,9 @@
         // if a page is clicked, activate buttons
         $(".list-group-item").click(function() {
             $(".btn").removeClass("disabled");
+            $(this).addClass("active");
+            // set all other elements to inactive
+            $(".list-group-item").not(this).removeClass("active");
         });
 
     });
