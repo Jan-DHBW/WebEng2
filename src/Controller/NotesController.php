@@ -3,17 +3,27 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Entity\Category;
+use App\Entity\Note;
+use App\Entity\Invitaion;
+
 
 class NotesController extends AbstractController
 {
     /**
-    * @Route("/notes")
+    * @Route("/notes/{uid}", name="notes")
     */
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine, int $uid): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $
         $notes = [
             'Categorie 1' => [
                 'Note 1',
