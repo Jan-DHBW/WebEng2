@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class NewNoteFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
+        $user = $this->getUser();
         $note = array_shift($options);
         $builder
             ->add('title')
