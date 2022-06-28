@@ -5,7 +5,7 @@
 {% block title %}Hello LoginController!{% endblock %}
 {% block body %}
 	{% if error %}
-		<div class="form-control text-center bg-danger"  style="max-width: 500px">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		<div class="form-control text-center bg-danger align-middle"  style="max-width: 500px">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
 	<div class="container text-center h-100 d-flex align-items-center justify-content-center animated-bounceInRight" style="max-width: 500px">
