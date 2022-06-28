@@ -7,28 +7,27 @@
 	{% if error %}
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
-	<div class="text-center">
-		<h1 class="display-1">NOTIZIUM</h1>
-	</div>
+
 	<div class="container text-center h-100 d-flex align-items-center justify-content-center" style="max-width: 500px">
 		<form action="{{ path('login') }}" class="form-signin" method="post">
-		
-			<div class="form-control text-center">
-				<h1 class="h3 mb-3 font-weight-normal">Bitte anmelden</h1>
-				<table class="table align-middle table-borderless">
-					<tr>
-						<td><label for="username" class="sr-only">Benutzername:</label></td>
-						<td><input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}"/></td>
-					</tr>
-					<tr>
-						<td><label for="password" class="sr-only">Passwort:</label></td>
-						<td><input type="password" id="password" class="form-control" name="_password"/></td>
-					</tr>
-				</table>
-				<br>
-				<button class="btn btn-primary btn-block" type="submit">Anmelden</button>
-				<a class="btn btn-primary" href="/register" role="button">Registrierung</a>
-			</div>
+			
+		<h1 class="display-1">NOTIZIUM</h1>
+		<div class="form-control text-center">
+			<h1 class="h3 mb-3 font-weight-normal">Bitte anmelden</h1>
+			<table class="table align-middle table-borderless">
+				<tr>
+					<td><label for="username" class="sr-only">Benutzername:</label></td>
+					<td><input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}"/></td>
+				</tr>
+				<tr>
+					<td><label for="password" class="sr-only">Passwort:</label></td>
+					<td><input type="password" id="password" class="form-control" name="_password"/></td>
+				</tr>
+			</table>
+			<br>
+			<button class="btn btn-primary btn-block" type="submit">Anmelden</button>
+			<a class="btn btn-primary" href="/register" role="button">Registrierung</a>
+		</div>
 		</form>
 	</div>
 {% endblock %}
