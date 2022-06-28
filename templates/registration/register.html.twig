@@ -24,10 +24,8 @@
                 <td>Passwort: </td>
                 <td>{{ form_row(registrationForm.plainPassword) }}</td>
             </tr>
-            <tr>
-                <td>Agree terms: {{ form_row(registrationForm.agreeTerms) }}</td>
-            </tr>
          </table>
+         <div class="text-center">Agree terms: {{ form_row(registrationForm.agreeTerms) }}</div>
          <button type="submit" class="btn">Register</button>
         </div>
     </div>
