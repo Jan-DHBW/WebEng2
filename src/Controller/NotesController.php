@@ -18,6 +18,11 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes", name="notes")
     */
+    private $security;
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
