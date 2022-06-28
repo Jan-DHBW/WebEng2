@@ -48,7 +48,7 @@
         </div>
         <div> 
             <button type="button" class="btn btn-success m-1">Neu</button>
-            <button type="button" class="btn btn-secondary m-1 disabled">Verschieben</button>
+            <button type="button" class="btn btn-secondary m-1 disabled" data-bs-toggle="modal" data-bs-target="#moveModal">Verschieben</button>
             {% set vars = {
                 target_modal: 'moveModal',
                 note_name: 'TODO',
