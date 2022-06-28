@@ -8,14 +8,14 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
-	<div class="container text-center h-100 d-flex align-items-center justify-content-center shadow" style="max-width: 500px">
+	<div class="container text-center h-100 d-flex align-items-center justify-content-center" style="max-width: 500px">
 		<form action="{{ path('login') }}" class="form-signin" method="post">
 			
 		<h1 class="display-1 text-light">NOTIZIUM</h1>
 		<br>
 		<br>
 		<br>
-		<div class="form-control text-center">
+		<div class="form-control text-center shadow">
 			<h1 class="h3 mb-3 font-weight-normal">Anmelden</h1>
 			<table class="table align-middle table-borderless">
 				<tr>
