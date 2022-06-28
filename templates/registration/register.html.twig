@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Register</h1>
-
+    <div class="container text-center" style="max-width: 300px">
     {{ form_start(registrationForm) }}
         <div class="form-control">
         {{ form_row(registrationForm.email) }}
@@ -17,5 +17,6 @@
         {{ form_row(registrationForm.agreeTerms) }}
 
         <button type="submit" class="btn">Register</button>
+        </div>
     {{ form_end(registrationForm) }}
 {% endblock %}
