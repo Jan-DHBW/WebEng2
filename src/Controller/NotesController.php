@@ -29,27 +29,45 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $notes = [
-            'Categorie 1' => [
-                'Note 1',
-                'Note 2',
-                'Note 3',
-            ],
-            'Categorie 2' => [
-                'Note 4',
-                'Note 5',
-                'Note 6',
-            ],
-            'Categorie 3' => [
-                'Note 7',
-                'Note 8',
-                'Note 9',
-                'Note 10',
-                'Note 11',
-                'Note 12',
-                'Note 13',
-            ],
-        ];
+        $allnotes = $user->getNotes();
+        $usercategories = $user->getCategories();
+        $uncategory = array();
+        $notes = array();
+        foreach($allnotes as $tmpnote){
+            if($tmpnote->getCategory() == NULL){
+                array_push($uncategory, $tmpnote);
+            }
+        }
+        array_push($notes, $uncategory);
+        foreach($usercategories as $tmpcategory){
+            $tmpname = $tmpcategory->getName();
+            ${"$tmpname"} = array();
+            foreach($tmpcategory->getNotes() as $tmpnote){
+                array_push(${"$tmpname"}, $tmpnote);
+            }
+            array_push($notes, ${"$tmpname"});
+        }
+        // $notes = [
+        //     'Categorie 1' => [
+        //         'Note 1',
+        //         'Note 2',
+        //         'Note 3',
+        //     ],
+        //     'Categorie 2' => [
+        //         'Note 4',
+        //         'Note 5',
+        //         'Note 6',
+        //     ],
+        //     'Categorie 3' => [
+        //         'Note 7',
+        //         'Note 8',
+        //         'Note 9',
+        //         'Note 10',
+        //         'Note 11',
+        //         'Note 12',
+        //         'Note 13',
+        //     ],
+        // ];
         return $this->render('notes.html.twig', [
             'notes' => $notes,
         ]);
