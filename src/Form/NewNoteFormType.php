@@ -34,7 +34,7 @@ class NewNoteFormType extends AbstractType{
                 'choice_label' => 'name',
                 'choice_value' => 'id',
                 'placeholder' => 'Choose a category',
-                'required' => true,
+                'required' => false,
             ])
         ;
     }
