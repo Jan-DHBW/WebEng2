@@ -40,6 +40,15 @@ class NotesController extends AbstractController
                 'Note 5',
                 'Note 6',
             ],
+            'Categorie 3' => [
+                'Note 7',
+                'Note 8',
+                'Note 9',
+                'Note 10',
+                'Note 11',
+                'Note 12',
+                'Note 13',
+            ],
         ];
         return $this->render('notes.html.twig', [
             'notes' => $notes,
