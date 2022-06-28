@@ -48,13 +48,11 @@
         <div> 
             <button type="button" class="btn btn-success m-1">Neu</button>
             <button type="button" class="btn btn-secondary m-1 disabled">Verschieben</button>
-            <button type="button" class="btn btn-danger m-1 disabled">Löschen</button>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
+            <button type="button" class="btn btn-danger m-1 disabled" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                Löschen
             </button>
             {% set vars = {
-                target_modal: '#exampleModal',
+                target_modal: 'deleteModal',
                 title: 'Notiz [NAME] löschen',
                 body: 'Die Notiz wird unwiderruflich gelöscht. Möchtest du fortfahren?',
                 option_yes: 'Löschen',
