@@ -5,28 +5,28 @@
 {% block body %}
     <div class="container text-center" style="max-width: 500px">
     {{ form_start(registrationForm) }}
-        <div class="form-control">
-        <h1>Registrierung</h1>
-        <table>
-            <tr>
-                <td>Email-Adresse: </td>
-                <td>{{ form_row(registrationForm.email)}}</td>
-            </tr>
-            <tr>
-                <td>Vorname: </td>
-                <td>{{ form_row(registrationForm.surname) }}</td>
-            </tr>
-            <tr>
-                <td>Nachname: </td>
-                <td>{{ form_row(registrationForm.lastname) }}</td>
-            </tr>
-            <tr>
-                <td>Passwort: </td>
-                <td>{{ form_row(registrationForm.plainPassword) }}</td>
-            </tr>
-         </table>
-         <div class="text-center">Agree terms: {{ form_row(registrationForm.agreeTerms) }}</div>
-         <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
+        <div class="form-control text-center">
+            <h1>Registrierung</h1>
+            <table>
+                <tr>
+                    <td>Email-Adresse: </td>
+                    <td>{{ form_row(registrationForm.email)}}</td>
+                </tr>
+                <tr>
+                    <td>Vorname: </td>
+                    <td>{{ form_row(registrationForm.surname) }}</td>
+                </tr>
+                <tr>
+                    <td>Nachname: </td>
+                    <td>{{ form_row(registrationForm.lastname) }}</td>
+                </tr>
+                <tr>
+                    <td>Passwort: </td>
+                    <td>{{ form_row(registrationForm.plainPassword) }}</td>
+                </tr>
+             </table>
+             <div class="text-center">Agree terms: {{ form_row(registrationForm.agreeTerms) }}</div>
+             <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
         </div>
     </div>
     {{ form_end(registrationForm) }}
