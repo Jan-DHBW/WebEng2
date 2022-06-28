@@ -10,7 +10,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class NewNoteController extends AbstractController{
@@ -23,10 +22,6 @@ class NewNoteController extends AbstractController{
         $user = $this->getUser();
         $categories = $user->getCategories();
         $note = new Note();
-        $data = array();
-        foreach($categories as $category){
-            array_push($data, $category);
-        }
         $form = $this->createForm(NewNoteFormType::class, $note);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

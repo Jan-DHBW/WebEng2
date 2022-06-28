@@ -7,26 +7,26 @@
     {{ form_start(registrationForm) }}
         <div class="form-control text-center">
             <h1>Registrierung</h1>
-            <table class="table-responsive">
-                <tr>
-                    <td>Email-Adresse: </td>
-                    <td>{{ form_row(registrationForm.email)}}</td>
-                </tr>
-                <tr>
-                    <td>Vorname: </td>
-                    <td>{{ form_row(registrationForm.surname) }}</td>
-                </tr>
-                <tr>
-                    <td>Nachname: </td>
-                    <td>{{ form_row(registrationForm.lastname) }}</td>
-                </tr>
-                <tr>
-                    <td>Passwort: </td>
-                    <td>{{ form_row(registrationForm.plainPassword) }}</td>
-                </tr>
-             </table>
-             <div class="text-center">Agree terms: {{ form_row(registrationForm.agreeTerms) }}</div>
-             <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
+            <table class="table align-middle table-borderless">
+               <tr>
+                   <td>Email-Adresse: </td>
+                   <td>{{ form_row(registrationForm.email)}}</td>
+               </tr>
+               <tr>
+                   <td>Vorname: </td>
+                   <td>{{ form_row(registrationForm.surname) }}</td>
+               </tr>
+               <tr>
+                   <td>Nachname: </td>
+                   <td>{{ form_row(registrationForm.lastname) }}</td>
+               </tr>
+               <tr>
+                   <td>Passwort: {{ form_row(registrationForm.plainPassword, {row_attr: { class: 'input-group form-control'}}) }}</td>
+               </tr>
+            </table>
+            {{ form_row(registrationForm.agreeTerms, {'label': 'Agree terms:    '}) }}
+            <br>
+            <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
         </div>
     </div>
     {{ form_end(registrationForm) }}
