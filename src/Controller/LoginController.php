@@ -40,3 +40,4 @@ class LoginController extends AbstractController
             return $this->redirectToRoute('notes');
         }
     }
+}
