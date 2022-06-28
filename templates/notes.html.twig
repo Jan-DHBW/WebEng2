@@ -38,9 +38,9 @@
                         {{ category }}
                     </a>
                     <div class="collapse" id="category_{{ loop.index0 }}">
-                        {% for j in 1..3 %}
+                        {% for note in notes[category] %}                            
                             <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>-->
-                            <a href='#' class="list-group-item list-group-item-action text-white bg-dark">Seite {{ j }}</a>
+                            <a href='#' class="list-group-item list-group-item-action text-white bg-dark">{{ note }}</a>
                         {% endfor %}
                     </div>
                 </ul>
