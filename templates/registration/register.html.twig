@@ -21,7 +21,8 @@
                    <td>{{ form_row(registrationForm.lastname) }}</td>
                </tr>
                <tr>
-                   <td>Passwort: {{ form_row(registrationForm.plainPassword)}}</td>
+                   <td>Passwort: </td>
+                   <td>{{ form_row(registrationForm.plainPassword)}}</td>
                </tr>
             </table>
             {{ form_row(registrationForm.agreeTerms, {'label': 'Agree terms:    '}) }}
