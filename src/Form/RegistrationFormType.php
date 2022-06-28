@@ -27,7 +27,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('surname', null, array('label' => false))
-            ->add('lastname', null, 'label' => false))
+            ->add('lastname', null, array('label' => false))
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
