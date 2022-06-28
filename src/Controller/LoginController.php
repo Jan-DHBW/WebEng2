@@ -33,7 +33,7 @@ class LoginController extends AbstractController
     /**
      * @Route("/", name="")
      */
-    public fuction index(): RedirectResponse
+    public function red(): RedirectResponse
      {  if($user = $this->getUser() == NULL){
         return $this->redirectToRoute('login');
         }else{
