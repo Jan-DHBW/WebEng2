@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class LogoutContoller extends AbstractController{
+class LogoutController extends AbstractController{
     /**
      * @Route("/logout", name="logout")
      */
