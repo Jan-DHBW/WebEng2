@@ -22,10 +22,6 @@ class NewNoteController extends AbstractController{
         $user = $this->getUser();
         $categories = $user->getCategories();
         $note = new Note();
-        $data = array();
-        foreach($categories as $category){
-            array_push($data, $category);
-        }
         $form = $this->createForm(NewNoteFormType::class, $note);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
