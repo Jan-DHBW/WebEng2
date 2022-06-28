@@ -19,10 +19,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', null, array('label' => false))
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => false
                 'mapped' => false,
-                'label_attr' => [
-                    'class' => 'checkbox-switch',
-                    ],
                 'constraints' => [
                     new IsTrue([
                         'message' => 'You should agree to our terms.',
