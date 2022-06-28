@@ -47,14 +47,17 @@
             {% endfor %}
         </div>
         <div> 
-            <button type="button" class="btn btn-success m-1">Neu</button>
+            <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#createModal">Neu</button>
+            {% set vars = {
+                target_modal: 'createModal',
+            } %}
+            {% include 'modals/create.html.twig' with vars %}
             <button type="button" class="btn btn-secondary m-1 disabled" data-bs-toggle="modal" data-bs-target="#moveModal">Verschieben</button>
             {% set vars = {
                 target_modal: 'moveModal',
                 note_name: 'TODO',
                 note_id: 'TODO',
                 note_category: 'TODO',
-                all_categories: notes,
             } %}
             {% include 'modals/move.html.twig' with vars %}
             <button type="button" class="btn btn-danger m-1 disabled" data-bs-toggle="modal" data-bs-target="#deleteModal">
