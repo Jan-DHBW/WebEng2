@@ -13,11 +13,18 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Security\Core\Security;
 use Doctrine\ORM\EntityManagerInterface;
 
 class NewNoteFormType extends AbstractType{
+
+    private $security;
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options){
-        $user = $this->getUser();
+        $user = $this->security->getUser();
         $note = array_shift($options);
         $builder
             ->add('title')
