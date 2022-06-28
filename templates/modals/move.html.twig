@@ -10,7 +10,7 @@
         Neue Kategorie:
         <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
-            {% for category in notes %}
+            {% for category in notes|keys %}
                 <option>{{category}}</option>
             {% endfor %}
         </select>
