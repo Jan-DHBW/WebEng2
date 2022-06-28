@@ -48,18 +48,24 @@
         </div>
         <div> 
             <button type="button" class="btn btn-success m-1">Neu</button>
-            <button type="button" class="btn btn-secondary m-1 disabled">Verschieben</button>
+            <button type="button" class="btn btn-secondary m-1 disabled" data-bs-toggle="modal" data-bs-target="#moveModal">Verschieben</button>
+            {% set vars = {
+                target_modal: 'moveModal',
+                note_name: 'TODO',
+                note_id: 'TODO',
+                note_category: 'TODO',
+                all_categories: notes,
+            } %}
+            {% include 'modals/move.html.twig' with vars %}
             <button type="button" class="btn btn-danger m-1 disabled" data-bs-toggle="modal" data-bs-target="#deleteModal">
                 Löschen
             </button>
             {% set vars = {
                 target_modal: 'deleteModal',
-                title: 'Notiz [NAME] löschen',
-                body: 'Die Notiz wird unwiderruflich gelöscht. Möchtest du fortfahren?',
-                option_yes: 'Löschen',
-                option_no: 'Abbrechen',
+                note_name: 'TODO',
+                note_id: 'TODO',
             } %}
-            {% include 'modals/confirm.html.twig' with vars %}
+            {% include 'modals/delete.html.twig' with vars %}
         </div>
     </div>
 </div>

@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="{{target_modal}}" tabindex="-1" aria-labelledby="#{{target_modal}}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" id="{{target_modal}}">Notiz {{note_name}} verschieben</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-dark">
+        Neue Kategorie:
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            {% for category in notes|keys %}
+                <option>{{category}}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <!--TODO Add form to delete note-->
+        <button type="button" class="btn btn-danger">Löschen</button>
+      </div>
+    </div>
+  </div>
+</div>

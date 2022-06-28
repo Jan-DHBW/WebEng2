@@ -3,15 +3,16 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-dark" id="{{target_modal}}">{{title}}</h5>
+        <h5 class="modal-title text-dark" id="{{target_modal}}">Notiz {{note_name}} löschen</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-dark">
-        {{body}}
+        Die Notiz wird unwiderruflich gelöscht. Möchtest du fortfahren?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{option_no}}</button>
-        <button type="button" class="btn btn-danger">{{option_yes}}</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <!--TODO Add form to delete note-->
+        <button type="button" class="btn btn-danger">Löschen</button>
       </div>
     </div>
   </div>
