@@ -31,12 +31,13 @@ class LoginController extends AbstractController
         throw new \Exception('Don\'t forget to activate logout in security.yaml');
     }
     /**
-     * @Route("/login", name="login")
+     * @Route("/", name="")
      */
-    public fuction index(): RedirectResponse
+    public function red(): RedirectResponse
      {  if($user = $this->getUser() == NULL){
         return $this->redirectToRoute('login');
         }else{
             return $this->redirectToRoute('notes');
         }
     }
+}
