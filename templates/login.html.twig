@@ -10,15 +10,17 @@
 
 	<div class="container text-center" style="max-width: 300px">
 		<form action="{{ path('login') }}" class="form-signin" method="post">
-			<h1 class="h3 mb-3 font-weight-normal">Bitte anmelden</h1>
-			<label for="username" class="sr-only">Benutzername:</label>
-			<input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}"/>
-			<br>
-			<label for="password" class="sr-only">Passwort:</label>
-			<input type="password" id="password" class="form-control" name="_password"/>
-			<br>
-			<button class="btn btn-primary btn-block" type="submit">Anmelden</button>
-			<a class="btn btn-primary" href="/register" role="button">Registrierung</a>
+			<div class="form-control text-center">
+				<h1 class="h3 mb-3 font-weight-normal">Bitte anmelden</h1>
+				<label for="username" class="sr-only">Benutzername:</label>
+				<input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}"/>
+				<br>
+				<label for="password" class="sr-only">Passwort:</label>
+				<input type="password" id="password" class="form-control" name="_password"/>
+				<br>
+				<button class="btn btn-primary btn-block" type="submit">Anmelden</button>
+				<a class="btn btn-primary" href="/register" role="button">Registrierung</a>
+			</div>
 		</form>
 	</div>
 {% endblock %}
