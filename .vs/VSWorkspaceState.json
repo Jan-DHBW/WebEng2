@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config",
+    "\\config\\routes",
+    "\\migrations",
+    "\\public",
+    "\\src",
+    "\\src\\Entity",
+    "\\src\\Form",
+    "\\src\\Repository",
+    "\\translations"
+  ],
+  "SelectedNode": "\\src\\Form\\RegistrationFormType.php",
+  "PreviewInSolutionExplorer": false
+}
