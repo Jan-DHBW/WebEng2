@@ -7,6 +7,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Security;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Note;
@@ -15,14 +16,14 @@ use App\Entity\Invitaion;
 
 class NotesController extends AbstractController
 {
-    /**
-    * @Route("/notes", name="notes")
-    */
     private $security;
     public function __construct(Security $security)
     {
         $this->security = $security;
     }
+    /**
+    * @Route("/notes", name="notes")
+    */
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
