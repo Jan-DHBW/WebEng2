@@ -114,7 +114,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes/new", name="newCat")
     */
-    public function newCat(Request $request): Response
+    public function newCat(Request $request):
     {
         $cat = new Category();
         $user  = $this->getUser();
