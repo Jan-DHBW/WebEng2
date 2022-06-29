@@ -112,7 +112,7 @@ class NotesController extends AbstractController
         ]);
     }
     /**
-    * @Route("/notes/new", name="newNCat")
+    * @Route("/notes/new", name="newCat")
     */
     public function newCat(Request $request): Response
     {
