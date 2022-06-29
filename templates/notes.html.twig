@@ -116,19 +116,13 @@
 
         // if texteditor gets scrolled to the bottom, scroll the preview to the same position
         $("#textEditor").on("scroll", function () {
-            // get height of both texteditor and preview
-            var editorPos = $(this).scrollTop();
-            var editorHeight = $(this).height();
-            var scrollHeight = $('.content').height();
-            var scrollPercent = (editorPos / (scrollHeight - editorHeight)) * 100;
-
-            //let editorHeight = $("#textEditor").get(0).scrollHeight
+            const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
+            let editorPerc = $('#textEditor').scrollTop() + 
+                            $('#textEditor').get(0).offsetHeight) / 
+                            $('#textEditor').get(0).scrollHeight
             let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
-            //let editorPos = $("#textEditor").scrollTop();
-            //let editorPrec = editorPos / editorHeight;
-            //let previewPos = previewHeight * editorPrec;
-            console.log("editorPos: " + editorPos + " editorHeight: " + editorHeight + " scrollHeight: " + scrollHeight + " scrollPercent: " + scrollPercent + " previewHeight: " + previewHeight);
-            $("#preview").contents().find('html').scrollTop(previewHeight * scrollPercent / 100);
+            let previewPos = previewHeight * editorPrec;
+            $("#preview").contents().find('html').scrollTop(previewPos);
         });
 
         // if a page is clicked, activate buttons
