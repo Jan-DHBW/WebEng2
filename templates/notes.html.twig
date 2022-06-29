@@ -114,6 +114,17 @@
             }
         });
 
+        // if texteditor gets scrolled to the bottom, scroll the preview to the same position
+        $("#textEditor").on("scroll", function () {
+            // get height of both texteditor and preview
+            let editorHeight = $("#textEditor").height();
+            let previewHeight = $("#preview").contents().find('html').height()
+            let editorPos = $("#textEditor").scrollTop();
+            let editorPrec = editorPos / editorHeight;
+            let previewPos = previewHeight * editorPrec;
+            $("#preview").contents().find('body').scrollTop(previewPos);
+        });
+
         // if a page is clicked, activate buttons
         $(".list-group-item").click(function() {
             $(".btn").removeClass("disabled");

@@ -5,6 +5,7 @@ html, body {
 	color: white;
 	background-color: #212529;
 	height: 100%;
+    overflow: hidden;
 }
 
 textarea {
