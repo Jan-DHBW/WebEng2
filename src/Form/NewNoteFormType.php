@@ -26,7 +26,6 @@ class NewNoteFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
         $user = $this->security->getUser();
         $categories = $user->getCategories();
-        $note = array_shift($options);
         $builder
             ->add('title')
             ->add('Category', ChoiceType::class, [

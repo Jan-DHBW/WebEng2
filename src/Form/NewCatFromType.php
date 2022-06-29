@@ -21,10 +21,7 @@ class NewCatFormType extends AbstractType
         $userid = $this->security->getUser()->getId();
 
         $builder
-            ->add('name')
-            ->add('owner_id', HiddenType::class, [
-                'data' => $userid,
-            ])
+            ->add('name', TextType::class)
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
