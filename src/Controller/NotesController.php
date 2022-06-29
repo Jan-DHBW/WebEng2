@@ -35,15 +35,15 @@ class NotesController extends AbstractController
         $notes = array();
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
-                array_push($uncategory, $tmpnote);
+                array_push($uncategory, $tmpnote->getTitle());
             }
         }
-        array_push($notes, $uncategory);
+        $notes['Unsoriert']= $uncategory;
         foreach($usercategories as $tmpcategory){
             $tmpname = $tmpcategory->getName();
             ${"$tmpname"} = array();
             foreach($tmpcategory->getNotes() as $tmpnote){
-                array_push(${"$tmpname"}, $tmpnote);
+                array_push(${"$tmpname"}, $tmpnote->getTitle());
             }
             array_push($notes, ${"$tmpname"});
         }
