@@ -122,7 +122,7 @@
             let editorPos = $("#textEditor").scrollTop();
             let editorPrec = editorPos / editorHeight;
             let previewPos = previewHeight * editorPrec;
-            $("#preview").contents().find('body').scrollTop(previewPos);
+            $("#preview").contents().find('html').scrollTop(previewPos);
         });
 
         // if a page is clicked, activate buttons
