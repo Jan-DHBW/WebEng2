@@ -41,7 +41,7 @@
 <div id="main" class="row container-fluid h-100 text-white" style="overflow: hidden;">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark text-white"></textarea>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white"></textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
         <iframe src="preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
@@ -119,7 +119,7 @@
         });
 
         // if texteditor gets scrolled to the bottom, scroll the preview to the same position
-        $("#textEditor").on("scroll", function () {
+        /*$("#textEditor").on("scroll", function () {
             const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
             let editorPerc = ($('#textEditor').scrollTop() + $('#textEditor').get(0).offsetHeight) / $('#textEditor').get(0).scrollHeight;
             let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
@@ -128,7 +128,7 @@
             $("#preview").contents().find('html').scrollTop(previewPos  - $("#textEditor").get(0).offsetHeight);
 
             //$("#preview").contents().find('html').scrollTop(($("#preview").contents().find('html').get(0).scrollHeight * 0)
-        });
+        });*/
 
         // if a page is clicked, activate buttons
         $(".list-group-item").click(function() {
