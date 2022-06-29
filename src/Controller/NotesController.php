@@ -129,8 +129,6 @@ class NotesController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('notes');
         }
-        return $this->render('/modals/create_cat.html.twig', [
-            'form' => $form->createView(),
-        ]);
+       ;
     }
 }
