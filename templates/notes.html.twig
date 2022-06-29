@@ -121,7 +121,9 @@
             let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
             let previewPos = previewHeight * editorPerc;
             console.log("Editor perc: " + editorPerc + " Preview pos: " + previewPos);
-            $("#preview").contents().find('html').scrollTop(previewPos);
+            $("#preview").contents().find('html').scrollTop(previewPos  - $("#textEditor").get(0).offsetHeight));
+
+            //$("#preview").contents().find('html').scrollTop(($("#preview").contents().find('html').get(0).scrollHeight * 0)
         });
 
         // if a page is clicked, activate buttons
