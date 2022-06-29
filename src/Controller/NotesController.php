@@ -129,7 +129,7 @@ class NotesController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('notes');
         }
-        return $form->isValid();
+        return $form->isSubmitted();
        ;
     }
 }
