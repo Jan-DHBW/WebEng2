@@ -119,7 +119,7 @@
             const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
             let editorPerc = ($('#textEditor').scrollTop() + $('#textEditor').get(0).offsetHeight) / $('#textEditor').get(0).scrollHeight;
             let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
-            let previewPos = previewHeight * editorPrec;
+            let previewPos = previewHeight * editorPerc;
             $("#preview").contents().find('html').scrollTop(previewPos);
         });
 
