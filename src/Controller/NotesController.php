@@ -81,4 +81,33 @@ class NotesController extends AbstractController
         // return the request as json
         return $this->json($request->request->all());
     }
+    /**
+    * @Route("/notes/{id}", name="notes{id}")
+    */
+    public function note(): Response{
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $allnotes = $user->getNotes();
+        $usercategories = $user->getCategories();
+        $uncategory = array();
+        $notes = array();
+        foreach($allnotes as $tmpnote){
+            if($tmpnote->getCategory() == NULL){
+                array_push($uncategory, $tmpnote->getTitle());
+            }
+        }
+        $notes['Unsoriert']= $uncategory;
+        foreach($usercategories as $tmpcategory){
+            $tmpname = $tmpcategory->getName();
+            ${"$tmpname"} = array();
+            foreach($tmpcategory->getNotes() as $tmpnote){
+                array_push(${"$tmpname"}, $tmpnote->getTitle());
+            }
+            array_push($notes, ${"$tmpname"});
+        }
+        return $this->render('notes.html.twig', [
+            'notes' => $notes,
+        ]);
+    }
 }
