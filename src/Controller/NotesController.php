@@ -114,7 +114,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes/new", name="newCat")
     */
-    public function newCat(Request $request):
+    public function newCat(Request $request): Response
     {
         $cat = new Category();
         $user  = $this->getUser();
@@ -129,6 +129,7 @@ class NotesController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('notes');
         }
+        return $form->isValid();
        ;
     }
 }
