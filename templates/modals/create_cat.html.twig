@@ -10,6 +10,12 @@
         Name:
         <input type="text" class="form-control" id="todo" placeholder="Neue Kategorie"></input>
       </div>
+      {{ form_start(newCatForm, {'action' : path('newCat')}) }}
+          <form method="post">
+                <td>Name</td>
+                <td>{{ form_row(newCatForm.name)}}</td>
+          </from>
+        {{ form_end(newCatForm) }}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
         <button type="button" class="btn btn-success">Erstellen</button>
