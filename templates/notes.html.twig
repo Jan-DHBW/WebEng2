@@ -96,7 +96,7 @@
         let nextSync = 0;
         $("#textEditor").on("input", function () {
             // set content of preview
-            $("#preview").contents().find('html').html(marked.parse($("#textEditor").val()));
+            $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
             if (nextSync < Date.now()) {
                 nextSync = Date.now() + 1000;
                 $('#topBarSyncedIcon').fadeOut(function () { $('#topBarLoadingSpinner').fadeIn(); });
