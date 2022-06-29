@@ -12,17 +12,16 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class NewCatFormType extends AbstractType
 {
-    private $security;
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $userid = $this->security->getUser()->getId();
 
         $builder
             ->add('name', TextType::class)
+            ->add('save', SubmitType::class, array(
+                'label' => 'Save',
+                'attr' => array('class' => 'btn btn-primary mt-3')
+            ))
+            ->getForm();
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void

@@ -118,18 +118,19 @@ class NotesController extends AbstractController
     {
         $cat = new Category();
         $user  = $this->getUser();
-        $newCatForm = $this->createForm(NewCatFormType::class, $cat);
+        $form = $this->createForm(NewCatFormType::class, $cat);
 
         $newCatForm->handleRequest($request);
         if ($newCatForm->isSubmitted() && $newCatForm->isValid()) {
+            $cat = $newCatForm->getData();
             $cat->setOwner($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($cat);
             $em->flush();
             return $this->redirectToRoute('notes');
         }
-        return $this->render('newCat.html.twig', [
-            'newCatForm' => $newCatForm->createView(),
+        return $this->render('notes.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
