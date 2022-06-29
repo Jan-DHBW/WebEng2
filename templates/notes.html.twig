@@ -120,6 +120,7 @@
             let editorPerc = ($('#textEditor').scrollTop() + $('#textEditor').get(0).offsetHeight) / $('#textEditor').get(0).scrollHeight;
             let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
             let previewPos = previewHeight * editorPerc;
+            console.log("Editor perc: " + editorPerc + " Preview pos: " + previewPos);
             $("#preview").contents().find('html').scrollTop(previewPos);
         });
 
