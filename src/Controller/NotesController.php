@@ -129,7 +129,11 @@ class NotesController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('notes');
         }
-        return $form->isSubmitted();
+        $response = new Response();
+        $response->setContent('<html><body><h1>Ich Hasse Web Entwicklung</h1></body></html>');
+        $response->headers->set('Content-Type', 'text/html');
+        $response->setStatusCode(Response::HTTP_OK);
+        return $response
        ;
     }
 }
