@@ -29,6 +29,7 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
+        $newCatForm = $this->createForm(NewCatFormType::class, $cat);
         $allnotes = $user->getNotes();
         $usercategories = $user->getCategories();
         $uncategory = array();
