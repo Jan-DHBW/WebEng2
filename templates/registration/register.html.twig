@@ -34,11 +34,14 @@
             <br>
             <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
         </div>
+        <button id="Test">
     </div>
     {{ form_end(registrationForm) }}
     <script>
-        $(document).ready(function () {
-            $("h1").first().fadeIn("slow");
+        $(document).ready(function(){
+            $("#Test").click(function(){
+                $("h1").fadeIn();
+            });
         });
     </script>
 {% endblock %}
