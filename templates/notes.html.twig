@@ -93,6 +93,10 @@
     $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip();
         $('#topBarLoadingSpinner').hide()
+
+        // set border size from .btn-outline-secondary
+        $(".btn").css("--bs-btn-border-width", "0px");
+
         let nextSync = 0;
         $("#textEditor").on("input", function () {
             // set content of preview
@@ -133,9 +137,6 @@
             // set all other elements to inactive
             $(".list-group-item").not(this).removeClass("active");
         });
-
-        // set border size from .btn-outline-secondary
-        $(".btn").css("--bs-btn-border-width", "0px");
     });
 </script>
 <script src="notes.js" type="text/javascript"></script>
