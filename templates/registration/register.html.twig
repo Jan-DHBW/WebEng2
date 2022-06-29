@@ -37,7 +37,7 @@
     {{ form_end(registrationForm) }}
     <script>
         $(document).ready(function () {
-            $("h1").fadeIn("slow");
+            $("h1:hidden").first().fadeIn("slow");
         });
     </script>
 {% endblock %}
