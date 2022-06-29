@@ -110,7 +110,9 @@ class NotesController extends AbstractController
             'notes' => $notes,
         ]);
     }
-
+    /**
+    * @Route("/notes/new", name="newNote")
+    */
     public function newCat(Request $request): Response
     {
         $cat = new Category();
