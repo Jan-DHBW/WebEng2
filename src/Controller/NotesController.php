@@ -120,9 +120,9 @@ class NotesController extends AbstractController
         $user  = $this->getUser();
         $form = $this->createForm(NewCatFormType::class, $cat);
 
-        $newCatForm->handleRequest($request);
-        if ($newCatForm->isSubmitted() && $newCatForm->isValid()) {
-            $cat = $newCatForm->getData();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $cat = $form->getData();
             $cat->setOwner($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($cat);
