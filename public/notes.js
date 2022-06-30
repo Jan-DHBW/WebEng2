@@ -30,17 +30,3 @@ $(document).mouseup(function(e){
    }
 });*/
 
-var toggler = $(".categoryTitle");
-// add click event to all toggler
-toggler.click(function(){
-    // get the next element
-    var content = $(this).next();
-    // toggle the content
-    content.toggle();
-    // toggle the plus/minus icon
-    $(this).children("i").toggleClass("fa-plus-circle fa-minus-circle");
-});
-// start all content closed
-for (var i = 0; i < toggler.length; i++) {
-    $(toggler[i]).next().hide();
-}
