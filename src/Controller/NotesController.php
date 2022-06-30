@@ -129,7 +129,7 @@ class NotesController extends AbstractController
         }
         return $this->render('notes.html.twig', [
             'notes' => $notes,
-            'registrationForm' => $form->createView()       ]);
+            'notes2' => $form->createView()       ]);
     }
     /**
     * @Route("/notes/new", name="newCat")
