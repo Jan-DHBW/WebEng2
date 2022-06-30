@@ -28,7 +28,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes", name="notes")
     */
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager,Request $request): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
@@ -51,29 +51,35 @@ class NotesController extends AbstractController
             }
             array_push($notes, ${"$tmpname"});
         }
-        // $notes = [
-        //     'Categorie 1' => [
-        //         'Note 1',
-        //         'Note 2',
-        //         'Note 3',
-        //     ],
-        //     'Categorie 2' => [
-        //         'Note 4',
-        //         'Note 5',
-        //         'Note 6',
-        //     ],
-        //     'Categorie 3' => [
-        //         'Note 7',
-        //         'Note 8',
-        //         'Note 9',
-        //         'Note 10',
-        //         'Note 11',
-        //         'Note 12',
-        //         'Note 13',
-        //     ],
-        // ];
+        $newnote = new Note();
+        $noteform = $this->createForm(NewNoteFormType::class, $newnote);
+        $noteform->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newnote->setOwner($user);
+            $newnote->setContent('');
+            $entityManager->persist($newnote);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes');
+        }
+        $newcat = new Category();
+        $catform = $this->createForm(NewCatFormType::class, $newcat);
+        $catform->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newcat->setOwner($user);
+            $entityManager->persist($newcat);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes');
+        }
+
         return $this->render('notes.html.twig', [
             'notes' => $notes,
+            'usercategories' => $usercategories,
+            'create_cat' => $catfrom,
+            'create_note' => $notefrom,
+ //           'delete_note' => $deletenotefrom,
+ //           'move_note' => $movenotefrom,
         ]);
     }
     // ajax post request to sync notes
@@ -96,17 +102,7 @@ class NotesController extends AbstractController
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
-        $newnote = new Note();
-        $form = $this->createForm(NewNoteFormType::class, $newnote);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $newnote->setOwner($user);
-            $newnote->setContent('');
-            $entityManager->persist($newnote);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
-            return $this->redirectToRoute('notes');
-        }
+        
 
 
         $test = "sd";
