@@ -7,8 +7,11 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-dark">
+        {{ form_start(notes2) }}
         Name:
+        {{ form_row(notes2.email) }}
         <input type="text" class="form-control" id="todo" placeholder="Neue Kategorie"></input>
+        {{ form_end(notes) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
