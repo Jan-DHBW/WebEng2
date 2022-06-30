@@ -7,7 +7,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-dark">
-        {{ form_start(notes2) }}
+        {{ form_start(create_cat) }}
         <h1 id="Test2" class="display-1 text-light shadow-lg">NOTIZIUM</h1>
 		<br>
 		<br>
@@ -16,12 +16,12 @@
             <h3 class="h3 mb-3 font-weight-normal">Registrierung</h3>     
             
             <table class="table align-middle table-borderless">
-                  {{ form_start(notes2) }}
-                  {{ form_row(notes2.title) }}
-                  {{ form_row(notes2.Category) }}
+                  {{ form_start(create_cat) }}
+                  {{ form_row(create_cat.title) }}
+                  {{ form_row(create_cat.Category) }}
 
         <button type="submit" class="btn">Neu</button>
-    {{ form_end(notes2) }}
+    {{ form_end(create_cat) }}
             </table>
              <br>
             <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
