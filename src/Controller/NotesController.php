@@ -105,7 +105,7 @@ class NotesController extends AbstractController
             $entityManager->persist($newnote);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            return $this->redirectToRoute('notes1');
+            return $this->redirectToRoute('notes');
         }
 
 
