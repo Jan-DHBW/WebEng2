@@ -54,7 +54,7 @@ class NotesController extends AbstractController
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
         $noteform->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($noteform->isSubmitted() && $noteform->isValid()) {
             $newnote->setOwner($user);
             $newnote->setContent('');
             $entityManager->persist($newnote);
@@ -65,7 +65,7 @@ class NotesController extends AbstractController
         $newcat = new Category();
         $catform = $this->createForm(NewCatFormType::class, $newcat);
         $catform->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($catform->isSubmitted() && $catform->isValid()) {
             $newcat->setOwner($user);
             $entityManager->persist($newcat);
             $entityManager->flush();
