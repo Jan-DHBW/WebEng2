@@ -1,17 +1,3 @@
-/*
-<div id="topBar"></div>
-<div id="main">
-    <div id="sideBar"></div>
-    <div id="content">
-        <div id="editor">
-            <textarea id="textEditor"></textarea>
-        </div>
-        <div id="dragBar"></div>
-        <div id="preview"></div>
-    </div>
-</div>
-*/
-
 html{
     font-family: 'Open Sans', sans-serif;
 }
