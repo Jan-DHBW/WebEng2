@@ -93,7 +93,7 @@ class NotesController extends AbstractController
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
-        $test = "sd"
+        $test = "sd";
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
                 array_push($uncategory, $tmpnote->getTitle());
