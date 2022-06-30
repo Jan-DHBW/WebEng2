@@ -76,8 +76,8 @@ class NotesController extends AbstractController
         return $this->render('notes.html.twig', [
             'notes' => $notes,
             'usercategories' => $usercategories,
-            'create_cat' => $catform,
-            'create_note' => $noteform,
+            'create_cat' => $catform->createView(),
+            'create_note' => $noteform->createView(),
  //           'delete_note' => $deletenotefrom,
  //           'move_note' => $movenotefrom,
         ]);
