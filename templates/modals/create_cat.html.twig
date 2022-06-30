@@ -8,10 +8,39 @@
       </div>
       <div class="modal-body text-dark">
         {{ form_start(notes2) }}
+        <h1 id="Test2" class="display-1 text-light shadow-lg">NOTIZIUM</h1>
+		<br>
+		<br>
+		<br>
+        <div class="form-control text-center shadow-lg">
+            <h3 class="h3 mb-3 font-weight-normal">Registrierung</h3>     
+            
+            <table class="table align-middle table-borderless">
+               <tr>
+                   <td>Email-Adresse: </td>
+                   <td>{{ form_row(notes2.email)}}</td>
+               </tr>
+               <tr>
+                   <td>Vorname: </td>
+                   <td>{{ form_row(notes2.surname) }}</td>
+               </tr>
+               <tr>
+                   <td>Nachname: </td>
+                   <td>{{ form_row(notes2.lastname) }}</td>
+               </tr>
+               <tr>
+                   <td>Passwort: </td>
+                   <td>{{ form_row(notes2.plainPassword)}}</td>
+               </tr>
+            </table>
+            {{ form_row(notes2.agreeTerms, {'label': 'Benutzungsbedingungen zustimmen:    '}) }}
+            <br>
+            <button type="submit" class="btn btn-primary btn-block">Registrieren</button>
+        </div>
+    </div>
+    {{ form_end(notes2) }}
         Name:
-        {{ form_row(notes2.email) }}
         <input type="text" class="form-control" id="todo" placeholder="Neue Kategorie"></input>
-        {{ form_end(notes) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
