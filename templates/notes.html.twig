@@ -144,28 +144,7 @@
                 });
             }
         });
-
-        // if texteditor gets scrolled to the bottom, scroll the preview to the same position
-        /*$("#textEditor").on("scroll", function () {
-            const clampNumber = (num, a, b) => Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
-            let editorPerc = ($('#textEditor').scrollTop() + $('#textEditor').get(0).offsetHeight) / $('#textEditor').get(0).scrollHeight;
-            let previewHeight = $("#preview").contents().find('html').get(0).scrollHeight;
-            let previewPos = previewHeight * editorPerc;
-            console.log("Editor perc: " + editorPerc + " Preview pos: " + previewPos);
-            $("#preview").contents().find('html').scrollTop(previewPos  - $("#textEditor").get(0).offsetHeight);
-
-            //$("#preview").contents().find('html').scrollTop(($("#preview").contents().find('html').get(0).scrollHeight * 0)
-        });*/
-
-        // if a page is clicked, activate buttons
-        /*$(".list-group-item").click(function() {
-            $(".btn").removeClass("disabled");
-            $(this).addClass("active");
-            // set all other elements to inactive
-            $(".list-group-item").not(this).removeClass("active");
-        });*/
     });
 </script>
-<!--<script src="notes.js" type="text/javascript"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 {% endblock %}
