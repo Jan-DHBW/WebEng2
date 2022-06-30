@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Security;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Note;
@@ -85,7 +86,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes/{id}", name="notes{id}")
     */
-    public function note(): Response{
+    public function note(EntityManagerInterface $entityManager): Response{
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
@@ -93,6 +94,24 @@ class NotesController extends AbstractController
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
+
+        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            $user->setPassword(
+            $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('notes1');	
+        }
+
+
         $test = "sd";
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
@@ -110,7 +129,7 @@ class NotesController extends AbstractController
         }
         return $this->render('notes.html.twig', [
             'notes' => $notes,
-            'notes2' => $test,        ]);
+            'notes2' => $form->createView()       ]);
     }
     /**
     * @Route("/notes/new", name="newCat")
