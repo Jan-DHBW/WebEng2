@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Security;
+use App\Form\NewNoteFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\RegistrationFormType;
 use App\Entity\User;
