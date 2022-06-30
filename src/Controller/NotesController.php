@@ -87,7 +87,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes/{id}", name="notes{id}")
     */
-    public function note(EntityManagerInterface $entityManager): Response{
+    public function note(EntityManagerInterface $entityManager,Request $request): Response{
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
