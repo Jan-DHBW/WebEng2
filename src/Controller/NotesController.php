@@ -95,16 +95,16 @@ class NotesController extends AbstractController
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
-
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $newnote = new Note();
+        $form = $this->createForm(NewNoteFormType::class, $newnote);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
-            $user->setPassword($form->get('plainPassword')->getData());
-
-            $entityManager->persist($user);
+            $newnote->setOwner($user);
+            $newnote->setContent('');
+            $entityManager->persist($newnote);
             $entityManager->flush();
-            return $this->redirectToRoute('notes1');	
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes1');
         }
 
 
