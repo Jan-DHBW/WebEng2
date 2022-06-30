@@ -113,24 +113,28 @@ class NotesController extends AbstractController
             'notes2' => $test,        ]);
     }
     /**
-    * @Route("/notes/new", name="newNote")
+    * @Route("/notes/new", name="newCat")
     */
     public function newCat(Request $request): Response
     {
         $cat = new Category();
         $user  = $this->getUser();
-        $newCatForm = $this->createForm(NewCatFormType::class, $cat);
+        $form = $this->createForm(NewCatFormType::class, $cat);
 
-        $newCatForm->handleRequest($request);
-        if ($newCatForm->isSubmitted() && $newCatForm->isValid()) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $cat = $form->getData();
             $cat->setOwner($user);
             $em = $this->getDoctrine()->getManager();
             $em->persist($cat);
             $em->flush();
             return $this->redirectToRoute('notes');
         }
-        return $this->render('newCat.html.twig', [
-            'newCatForm' => $newCatForm->createView(),
-        ]);
+        $response = new Response();
+        $response->setContent('<html><body><h1>Ich Hasse Web Entwicklung</h1></body></html>');
+        $response->headers->set('Content-Type', 'text/html');
+        $response->setStatusCode(Response::HTTP_OK);
+        return $response
+       ;
     }
 }
