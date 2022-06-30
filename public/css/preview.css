@@ -92,3 +92,7 @@ header h1 {
 	border-color: red;
 	background-color: #FEE
 }
+
+code {
+	color: rgb(213, 0, 213);
+}
