@@ -27,14 +27,21 @@ class NewNoteFormType extends AbstractType{
         $user = $this->security->getUser();
         $categories = $user->getCategories();
         $builder
-            ->add('title')
-            ->add('Category', ChoiceType::class, [
+            ->add('title', array(
+                'attr' => array('class' => 'form-control')
+            ))
+            ->add('category', ChoiceType::class, [
                 'choices' => $categories,
                 'choice_label' => 'name',
                 'choice_value' => 'id',
-                'placeholder' => 'Choose a category',
+                'placeholder' => 'Wähle eine Kategorie',
                 'required' => false,
             ])
+            ->add('save', SubmitType::class, array(
+                'label' => 'Erstellen',
+                'attr' => array('class' => 'btn btn-success')
+            ))
+            ->getForm();
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void

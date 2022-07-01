@@ -6,21 +6,18 @@
         <h5 class="modal-title text-dark" id="{{target_modal}}">Notiz erstellen</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      {{ form_start(create_note) }}
       <div class="modal-body text-dark">
         Titel:
-        <input type="text" class="form-control" id="todo" placeholder="Neue Notiz"></input>
+        {{ form_row(create_note.title) }}
         Kategorie:
-        <select class="form-select" aria-label="Neue Kategorie">
-            {% for category in notes|keys %}
-                <option value="TODO cat ID">{{category}}</option>
-            {% endfor %}
-        </select>
+        {{ form_row(create_note.category) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-        <!--TODO Add form to create note-->
-        <button type="button" class="btn btn-success">Erstellen</button>
+        {{ form_row(create_note.save) }}
       </div>
+      {{ form_end(create_note) }}
     </div>
   </div>
 </div>
