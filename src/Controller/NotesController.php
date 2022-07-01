@@ -145,8 +145,7 @@ class NotesController extends AbstractController
             // do anything else you need here, like send an email
             return $this->redirectToRoute('notes');
         }
-        $movenote = new note();
-        $movenoteform = $this->createForm(MoveNoteFormType::class, $movenote);
+        $movenoteform = $this->createForm(MoveNoteFormType::class);
         $movenoteform->handleRequest($request);
         if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
