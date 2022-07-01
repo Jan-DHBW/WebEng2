@@ -111,7 +111,7 @@ class NotesController extends AbstractController
             $tmpnote = count($tmpcategory->getNotes());
 
             $category[$keytitle] = $tmpnote;
-//            array_push($allnotes, $category);
+            array_push($allnotes, $category);
         }
         print_r($allnotes);
 
