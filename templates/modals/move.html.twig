@@ -9,11 +9,9 @@
       <div class="modal-body text-dark">
         Verschieben nach:
         <select class="form-select" aria-label="Neue Kategorie">
-            {% for category in notes|keys %}
                  {{ form_start(move_note) }}
-                 {{ form_row(move_note.movecategory) }}
+                 {{ form_row(move_note.category) }}
                  {{ form_row(move_note.save) }}
-                <option value="TODO cat ID">{{category}}</option>
             {% endfor %}
         </select>
       </div>
