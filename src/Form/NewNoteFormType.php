@@ -27,7 +27,7 @@ class NewNoteFormType extends AbstractType{
         $user = $this->security->getUser();
         $categories = $user->getCategories();
         $builder
-            ->add('title', array(
+            ->add('title', TextType::class, array(
                 'attr' => array('class' => 'form-control')
             ))
             ->add('category', ChoiceType::class, [
