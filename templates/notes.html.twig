@@ -51,7 +51,7 @@
             {% for category in usercategories %}
                 <ul class="list-group mb-2" >
                     <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
-                        {{ category }}
+                        {{ category.name }}
                     </a>
                     
                 </ul>
