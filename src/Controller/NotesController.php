@@ -114,19 +114,19 @@ class NotesController extends AbstractController
             array_push($allnotes, $category);
         }
         //print_r($allnotes);
+        $uncatnote = array();
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
-                $category = array();
-                $keytitle = 'Unsoriert';
-                $tmpnote = count($tmpcategory->getNotes());
-
-                $category[$keytitle] = $tmpnote;
-                array_push($allnotes, $category);
+                array_push($uncatnote, $tmpnote);
             }
-
+            
         }
-
-
+        $category = array();
+        $keytitle = 'Unsoriert';
+        $category[$keytitle] = $uncatnote;
+        array_push($allnotes, $category);    
+        
+        
 
 
 
