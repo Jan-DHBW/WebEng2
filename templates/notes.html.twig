@@ -56,7 +56,7 @@
                     <div class="collapse" id="category_{{ loop.index0 }}">
                         {% for note in notes[category] %}                         
                             <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">...</a>-->
-                            <a href='/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
+                            <a href='note/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
                         {% endfor %}
                     </div>
                 </ul>
