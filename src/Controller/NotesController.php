@@ -108,7 +108,7 @@ class NotesController extends AbstractController
             $category = array();
             $keytitle = $tmpcategory->getName();
 //            $keynote = $tmpcategory->getNotes();
-            $tmpnote = count($tmpcategory->getNotes());
+            $tmpnote = $tmpcategory->getNotes();
 
             $category[$keytitle] = $tmpnote;
             array_push($allnotes, $category);
@@ -125,25 +125,6 @@ class NotesController extends AbstractController
         $keytitle = 'Unsoriert';
         $category[$keytitle] = $uncatnote;
         array_push($allnotes, $category);    
-        
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         $notes['Unsoriert']= $uncategory;
         foreach($usercategories as $tmpcategory){
