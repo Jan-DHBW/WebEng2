@@ -32,7 +32,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $categories = $user->getCategories();
     $builder
         ->add('category', ChoiceType::class, [
-            'label' => 'Kategorie',
+            'label' => false,
             'choices' => $categories,
             'choice_label' => 'name',
             'choice_value' => 'id',
