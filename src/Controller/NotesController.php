@@ -153,7 +153,7 @@ class NotesController extends AbstractController
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
-            return $this->redirectToRoute($url);
+            return $this->redirect($url);
         }
 
         return $this->render('notes.html.twig', [
