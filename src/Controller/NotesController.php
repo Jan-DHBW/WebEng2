@@ -51,6 +51,7 @@ class NotesController extends AbstractController
             }
             array_push($notes, ${"$tmpname"});
         }
+        print_r($notes);
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
         $noteform->handleRequest($request);
