@@ -99,7 +99,8 @@ class NotesController extends AbstractController
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $usercategories = $user->getCategories();
-       // $uncategory = array();
+        $uncategory = array();
+        $notes = array();
         $allnotes = array();
         //iterate over all categories and notes and put them in indexed arrays with category names as keys
 
@@ -107,27 +108,28 @@ class NotesController extends AbstractController
             $category = array();
             $keytitle = $tmpcategory->getName();
 //            $keynote = $tmpcategory->getNotes();
-            $allnotes = count($tmpcategory->getNotes());
-            print_r($allnotes);
-            $category[$keytitle] = 0;
+            $tmpnote = count($tmpcategory->getNotes());
+
+            $category[$keytitle] = $tmpnote;
 //            array_push($allnotes, $category);
         }
+        print_r($allnotes);
 
 
-        // foreach($allnotes as $tmpnote){
-        //     if($tmpnote->getCategory() == NULL){
-        //         array_push($uncategory, $tmpnote->getTitle());
-        //     }
-        // }
-        // $notes['Unsoriert']= $uncategory;
-        // foreach($usercategories as $tmpcategory){
-        //     $tmpname = $tmpcategory->getName();
-        //     ${"$tmpname"} = array();
-        //     foreach($tmpcategory->getNotes() as $tmpnote){
-        //         array_push(${"$tmpname"}, $tmpnote->getTitle());
-        //     }
-        //     array_push($notes, ${"$tmpname"});
-        // }
+        foreach($allnotes as $tmpnote){
+            if($tmpnote->getCategory() == NULL){
+                array_push($uncategory, $tmpnote->getTitle());
+            }
+        }
+        $notes['Unsoriert']= $uncategory;
+        foreach($usercategories as $tmpcategory){
+            $tmpname = $tmpcategory->getName();
+            ${"$tmpname"} = array();
+            foreach($tmpcategory->getNotes() as $tmpnote){
+                array_push(${"$tmpname"}, $tmpnote->getTitle());
+            }
+            array_push($notes, ${"$tmpname"});
+        }
 
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
