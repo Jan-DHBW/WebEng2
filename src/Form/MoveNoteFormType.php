@@ -31,10 +31,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
     $builder
-        ->add('title', TextType::class, array(
-            'label' => 'Titel',
-            'attr' => array('class' => 'form-control')
-        ))
         ->add('category', ChoiceType::class, [
             'label' => 'Kategorie',
             'choices' => $categories,
@@ -44,7 +40,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'required' => false,
         ])
         ->add('save', SubmitType::class, array(
-            'label' => 'Erstellen',
+            'label' => 'Ändern',
             'attr' => array('class' => 'btn btn-success')
         ))
         ->getForm();

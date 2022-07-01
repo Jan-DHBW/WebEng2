@@ -98,6 +98,11 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
+        $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
+        $content = $currentnote->getContent();
+        if($currentnote->getOwner() != $user){
+            return $this->redirectToRoute('notes');
+        }
         $usercategories = $user->getCategories();
         $notes = array();
         $uncatnotes = array();
@@ -140,7 +145,17 @@ class NotesController extends AbstractController
             return $this->redirectToRoute('notes');
         }
 
+        $movenoteform = $this->createForm(MoveNoteFormType::class, $currentnote);
+        $movenoteform->handleRequest($request);
+        if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
+            $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
+            $note->setCategory($movenoteform['category']->getData());
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes');
+        }
+
         return $this->render('notes.html.twig', [
+            'content' => $content,
             'notes' => $notes,
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
