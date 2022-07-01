@@ -10,7 +10,9 @@
         Verschieben nach:
         <select class="form-select" aria-label="Neue Kategorie">
             {% for category in notes|keys %}
-                <!-- TODO remove current category -->
+                 {{ form_start(move_note) }}
+                 {{ form_row(move_note.category) }}
+                 {{ form_row(move_note.save) }}
                 <option value="TODO cat ID">{{category}}</option>
             {% endfor %}
         </select>
