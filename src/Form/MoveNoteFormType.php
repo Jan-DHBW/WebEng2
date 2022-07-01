@@ -31,7 +31,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
     $builder
-        ->add('category', ChoiceType::class, [
+        ->add('movecategory', ChoiceType::class, [
             'label' => 'Kategorie',
             'choices' => $categories,
             'choice_label' => 'name',
