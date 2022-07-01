@@ -115,7 +115,7 @@ class NotesController extends AbstractController
         }
         print_r($allnotes);
 
-
+        $allnotes = $user->getNotes();
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
                 array_push($uncategory, $tmpnote->getTitle());
