@@ -20,7 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
-class NewNoteFormType extends AbstractType{
+class MoveNoteFormType extends AbstractType{
 
 private $security;
 public function __construct(Security $security)
