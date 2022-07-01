@@ -98,16 +98,53 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $allnotes = $user->getNotes();
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
+        $allnotes = array();
+        //iterate over all categories and notes and put them in indexed arrays with category names as keys
 
-        foreach($allnotes as $tmpnote){
-            if($tmpnote->getCategory() == NULL){
-                array_push($uncategory, $tmpnote->getTitle());
-            }
+        foreach($usercategories as $tmpcategory){
+            $category = array();
+            $keytitle = $tmpcategory->getName();
+//            $keynote = $tmpcategory->getNotes();
+            $tmpnote = count($tmpcategory->getNotes());
+
+            $category[$keytitle] = $tmpnote;
+            array_push($allnotes, $category);
         }
+        //print_r($allnotes);
+        $uncatnote = array();
+        foreach($user->getNotes() as $tmpnote){
+            if($tmpnote->getCategory() == NULL){
+                array_push($uncatnote, $tmpnote);
+            }
+            
+        }
+        $category = array();
+        $keytitle = 'Unsoriert';
+        $category[$keytitle] = $uncatnote;
+        array_push($allnotes, $category);    
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $notes['Unsoriert']= $uncategory;
         foreach($usercategories as $tmpcategory){
             $tmpname = $tmpcategory->getName();
