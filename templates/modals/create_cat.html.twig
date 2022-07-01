@@ -6,33 +6,21 @@
 				<h5 class="modal-title text-dark" id="{{target_modal}}">Kategorie erstellen</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
+			{{ form_start(create_cat) }}
 			<div class="modal-body text-dark">
-				{{ form_start(create_cat) }}
-				<h1 id="Test2" class="display-1 text-light shadow-lg">NOTIZIUM</h1>
-				<br>
-				<br>
-				<br>
 				<div class="form-control text-center shadow-lg">
-					<h3 class="h3 mb-3 font-weight-normal">Registrierung</h3>
-
 					<table class="table align-middle table-borderless">
-						{{ form_start(create_cat) }}
 						{{ form_row(create_cat.name) }}
 						{{ form_row(create_cat.save) }}
-
-						<button type="submit" class="btn">Neu</button>
-						{{ form_end(create_cat) }}
 					</table>
 					<br>
-					<button type="submit" class="btn btn-primary btn-block">Registrieren</button>
 				</div>
 			</div>
-			Name:
-			<!--<input type="text" class="form-control" id="todo" placeholder="Neue Kategorie"></input>-->
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-		<!--TODO Add form to create note-->
-		<!--<button type="button" class="btn btn-success">Erstellen</button>-->
-	</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        <button type="submit" class="btn btn-success">Erstellen</button>
+      </div>
+      {{ form_end(create_cat) }}
+    </div>
+  </div>
 </div>
