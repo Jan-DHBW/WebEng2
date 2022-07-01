@@ -9,11 +9,11 @@
 			{{ form_start(create_cat) }}
 			<div class="modal-body text-dark">
 					{{ form_row(create_cat.name) }}
-					{{ form_row(create_cat.save) }}
 			</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-        <button type="submit" class="btn btn-success">Erstellen</button>
+        <!--<button type="submit" class="btn btn-success">Erstellen</button>-->
+				{{ form_row(create_cat.save) }}
       </div>
       {{ form_end(create_cat) }}
     </div>
