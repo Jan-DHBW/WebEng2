@@ -102,10 +102,7 @@ class NotesController extends AbstractController
         $usercategories = $user->getCategories();
         $uncategory = array();
         $notes = array();
-        
 
-
-        $test = "sd";
         foreach($allnotes as $tmpnote){
             if($tmpnote->getCategory() == NULL){
                 array_push($uncategory, $tmpnote->getTitle());
@@ -120,8 +117,34 @@ class NotesController extends AbstractController
             }
             array_push($notes, ${"$tmpname"});
         }
+
+        $newnote = new Note();
+        $noteform = $this->createForm(NewNoteFormType::class, $newnote);
+        $noteform->handleRequest($request);
+        if ($noteform->isSubmitted() && $noteform->isValid()) {
+            $newnote->setOwner($user);
+            $newnote->setContent('');
+            $entityManager->persist($newnote);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes');
+        }
+        $newcat = new Category();
+        $catform = $this->createForm(NewCatFormType::class, $newcat);
+        $catform->handleRequest($request);
+        if ($catform->isSubmitted() && $catform->isValid()) {
+            $newcat->setOwner($user);
+            $entityManager->persist($newcat);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            return $this->redirectToRoute('notes');
+        }
+
         return $this->render('notes.html.twig', [
             'notes' => $notes,
+            'usercategories' => $usercategories,
+            'create_cat' => $catform->createView(),
+            'create_note' => $noteform->createView(),
             //'notes2' => $form->createView()
         ]);
     }
