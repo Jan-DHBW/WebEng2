@@ -145,12 +145,6 @@ class NotesController extends AbstractController
 
 
 
-        $category[$keytitle] = $tmpnote;
-        foreach($allnotes as $tmpnote){
-            if($tmpnote->getCategory() == NULL){
-                array_push($uncategory, $tmpnote->getTitle());
-            }
-        }
         $notes['Unsoriert']= $uncategory;
         foreach($usercategories as $tmpcategory){
             $tmpname = $tmpcategory->getName();
