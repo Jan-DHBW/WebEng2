@@ -152,7 +152,7 @@ class NotesController extends AbstractController
             $note->setCategory($movenoteform['category']->getData());
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
-            $url = $url.$request->get('id');
+            $url = $url.'/'.$request->get('id');
             return $this->redirectToRoute($url);
         }
 
