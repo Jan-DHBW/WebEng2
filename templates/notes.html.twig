@@ -21,12 +21,7 @@
                     <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
                 </svg>
             </button>
-            {% set vars = {
-                target_modal: 'shareModal',
-                note_name: 'TODO',
-                note_id: 'TODO3',
-            } %}
-            {% include 'modals/share.html.twig' with vars %}
+
 
             <button id="btnLogout" type="button" class="btn text-white btn-outline-danger" onclick="location.href='/logout'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"
@@ -47,21 +42,7 @@
         <iframe src="../preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
     </div>
     <div id="sideBar" class="col row">
-        <div class="col overflow-auto scrollbar scrollbar-primary h-75 mb-2" style="overflow-y: scroll; max-height:90vh;">
-            {% for category in notes|keys %}
-                <ul class="list-group mb-2" >
-                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
-                        {{ category }}
-                    </a>
-                    <div class="collapse" id="category_{{ loop.index0 }}">
-                        {% for note in notes[category] %}                            
-                            <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">...</a>-->
-                            <a href='#{{ note }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note }}</a>
-                        {% endfor %}
-                    </div>
-                </ul>
-            {% endfor %}
-        </div>
+
         <div class="h-25"> 
             <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#create_noteModal"
                 data-toggle="tooltip" data-bs-placement="top" title="Notiz erstellen">
@@ -71,10 +52,7 @@
                     <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                 </svg>
             </button>
-            {% set vars = {
-                target_modal: 'create_noteModal',
-            } %}
-            {% include 'modals/create_note.html.twig' with vars %}
+
             <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#create_catModal"
                 data-toggle="tooltip" data-bs-placement="top" title="Kategorie erstellen">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 16 16">
@@ -82,23 +60,14 @@
                     <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
                 </svg>
             </button>
-            {% set vars = {
-                target_modal: 'create_catModal',
-            } %}
-            {% include 'modals/create_cat.html.twig' with vars %}
+
             <button type="button" class="btn btn-secondary m-1" data-bs-toggle="modal" data-bs-target="#moveModal"
                 data-toggle="tooltip" data-bs-placement="top" title="Notiz verschieben">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10zM.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708l-2-2zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8z"/>
                 </svg>
             </button>
-            {% set vars = {
-                target_modal: 'moveModal',
-                note_name: 'TODO',
-                note_id: 'TODO1',
-                note_category: 'TODO',
-            } %}
-            {% include 'modals/move.html.twig' with vars %}
+
             <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteModal"
                 data-toggle="tooltip" data-bs-placement="top" title="Notiz löschen">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
