@@ -16,6 +16,7 @@ use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\Invitaion;
 use App\Form\NewCatFormType;
+use App\Form\MoveNoteFormType;
 
 
 class NotesController extends AbstractController
