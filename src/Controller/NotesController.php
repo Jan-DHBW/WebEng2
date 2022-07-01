@@ -72,7 +72,7 @@ class NotesController extends AbstractController
             // do anything else you need here, like send an email
             return $this->redirectToRoute('notes');
         }
-        print_r($notes);
+        print_r($allnotes);
 
         return $this->render('notes.html.twig', [
             'notes' => $notes,
