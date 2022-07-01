@@ -106,11 +106,13 @@ class NotesController extends AbstractController
         foreach($usercategories as $tmpcategory){
             $category = array();
             $keytitle = $tmpcategory->getName();
-            $keynote = $tmpcategory->getNotes();
-            $category[$keytitle] = $keynote;
-            array_push($allnotes, $category);
+//            $keynote = $tmpcategory->getNotes();
+            $allnotes = count($tmpcategory->getNotes());
+            print_r($allnotes);
+            $category[$keytitle] = 0;
+//            array_push($allnotes, $category);
         }
-        print_r($allnotes);
+
 
         // foreach($allnotes as $tmpnote){
         //     if($tmpnote->getCategory() == NULL){
