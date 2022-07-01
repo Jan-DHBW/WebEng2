@@ -98,25 +98,34 @@ class NotesController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_REMEMBERED');
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $allnotes = $user->getNotes();
         $usercategories = $user->getCategories();
-        $uncategory = array();
-        $notes = array();
+       // $uncategory = array();
+        $allnotes = array();
+        //iterate over all categories and notes and put them in indexed arrays with category names as keys
 
-        foreach($allnotes as $tmpnote){
-            if($tmpnote->getCategory() == NULL){
-                array_push($uncategory, $tmpnote->getTitle());
-            }
-        }
-        $notes['Unsoriert']= $uncategory;
         foreach($usercategories as $tmpcategory){
-            $tmpname = $tmpcategory->getName();
-            ${"$tmpname"} = array();
-            foreach($tmpcategory->getNotes() as $tmpnote){
-                array_push(${"$tmpname"}, $tmpnote->getTitle());
-            }
-            array_push($notes, ${"$tmpname"});
+            $category = array();
+            $keytitle = $tmpcategory->getName();
+            $keynote = $tmpcategory->getNotes();
+            $category[$keytitle] = $keynote;
+            array_push($allnotes, $category);
         }
+        print_r($allnotes);
+
+        // foreach($allnotes as $tmpnote){
+        //     if($tmpnote->getCategory() == NULL){
+        //         array_push($uncategory, $tmpnote->getTitle());
+        //     }
+        // }
+        // $notes['Unsoriert']= $uncategory;
+        // foreach($usercategories as $tmpcategory){
+        //     $tmpname = $tmpcategory->getName();
+        //     ${"$tmpname"} = array();
+        //     foreach($tmpcategory->getNotes() as $tmpnote){
+        //         array_push(${"$tmpname"}, $tmpnote->getTitle());
+        //     }
+        //     array_push($notes, ${"$tmpname"});
+        // }
 
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
