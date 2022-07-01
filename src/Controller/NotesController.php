@@ -99,42 +99,24 @@ class NotesController extends AbstractController
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $usercategories = $user->getCategories();
-        $uncategory = array();
         $notes = array();
-        $allnotes = array();
-        //iterate over all categories and notes and put them in indexed arrays with category names as keys
-
-        foreach($usercategories as $tmpcategory){
-            $category = array();
-            $keytitle = $tmpcategory->getName();
-//            $keynote = $tmpcategory->getNotes();
-            $tmpnote = $tmpcategory->getNotes();
-
-            $category[$keytitle] = $tmpnote;
-            array_push($allnotes, $category);
-        }
-        //print_r($allnotes);
-        $uncatnote = array();
+        $uncatnotes = array();
         foreach($user->getNotes() as $tmpnote){
             if($tmpnote->getCategory() == NULL){
-                array_push($uncatnote, $tmpnote);
+                array_push($uncatnotes, $tmpnote);
             }
-            
         }
-        $category = array();
-        $keytitle = 'Unsoriert';
-        $category[$keytitle] = $uncatnote;
-        array_push($allnotes, $category);    
-
-        $notes['Unsoriert']= $uncategory;
+        $notes['Unsoriert']= $uncatnotes;
         foreach($usercategories as $tmpcategory){
-            $tmpname = $tmpcategory->getName();
-            ${"$tmpname"} = array();
-            foreach($tmpcategory->getNotes() as $tmpnote){
-                array_push(${"$tmpname"}, $tmpnote->getTitle());
-            }
-            array_push($notes, ${"$tmpname"});
+            $catname = $tmpcategory->getName();
+            $notes[$catname] = $tmpcategory->getNotes();
         }
+
+
+
+
+
+
 
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
@@ -159,7 +141,6 @@ class NotesController extends AbstractController
         }
 
         return $this->render('notes.html.twig', [
-            'allnotes' => $allnotes,
             'notes' => $notes,
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
