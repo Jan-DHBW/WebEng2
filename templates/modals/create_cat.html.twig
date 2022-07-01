@@ -8,13 +8,8 @@
 			</div>
 			{{ form_start(create_cat) }}
 			<div class="modal-body text-dark">
-				<div class="form-control text-center shadow-lg">
-					<table class="table align-middle table-borderless">
-						{{ form_row(create_cat.name) }}
-						{{ form_row(create_cat.save) }}
-					</table>
-					<br>
-				</div>
+					{{ form_row(create_cat.name) }}
+					{{ form_row(create_cat.save) }}
 			</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
