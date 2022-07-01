@@ -47,7 +47,21 @@
         <iframe src="../preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
     </div>
     <div id="sideBar" class="col row">
-
+        <div class="col overflow-auto scrollbar scrollbar-primary h-75 mb-2" style="overflow-y: scroll; max-height:90vh;">
+            {% for category in notes|keys %}
+                <ul class="list-group mb-2" >
+                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
+                        {{ category }}
+                    </a>
+                    <div class="collapse" id="category_{{ loop.index0 }}">
+                        {% for note in notes[category] %}                            
+                            <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">...</a>-->
+                            <a href='#{{ note }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note }}</a>
+                        {% endfor %}
+                    </div>
+                </ul>
+            {% endfor %}
+        </div>
         <div class="h-25"> 
             <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#create_noteModal"
                 data-toggle="tooltip" data-bs-placement="top" title="Notiz erstellen">
