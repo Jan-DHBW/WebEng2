@@ -17,10 +17,12 @@ class NewCatFormType extends AbstractType
     {
 
         $builder
-            ->add('name', TextType::class)
+            ->add('name', TextType::class, array(
+                'attr' => array('class' => 'form-control')
+            ))
             ->add('save', SubmitType::class, array(
-                'label' => 'Save',
-                'attr' => array('class' => 'btn btn-primary mt-3')
+                'label' => 'Erstellen',
+                'attr' => array('class' => 'btn btn-success')
             ))
             ->getForm();
         ;
