@@ -28,22 +28,9 @@ public function __construct(Security $security)
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
-    $categories = $user->getCategories();
     $builder
-        ->add('title', TextType::class, array(
-            'label' => 'Titel',
-            'attr' => array('class' => 'form-control')
-        ))
-        ->add('category', ChoiceType::class, [
-            'label' => 'Kategorie',
-            'choices' => $categories,
-            'choice_label' => 'name',
-            'choice_value' => 'id',
-            'placeholder' => 'Wähle eine Kategorie',
-            'required' => false,
-        ])
         ->add('save', SubmitType::class, array(
-            'label' => 'Erstellen',
+            'label' => 'LÖSCHEN',
             'attr' => array('class' => 'btn btn-success')
         ))
         ->getForm();
@@ -52,7 +39,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
 public function configureOptions(OptionsResolver $resolver): void
 {
     $resolver->setDefaults([
-        'data_class' => Note::class,
+        'data_class' => deleteTask::class,
     ]);
 }
 
