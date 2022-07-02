@@ -180,8 +180,8 @@ class NotesController extends AbstractController
             $entityManager->remove($note);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            $url = $this->generateUrl('notes');
-            return $this->redirectToRoute($url);
+
+            return $this->redirectToRoute('notes');
         }
 
         return $this->render('notes.html.twig', [
