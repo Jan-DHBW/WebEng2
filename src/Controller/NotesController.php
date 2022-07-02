@@ -49,7 +49,7 @@ class NotesController extends AbstractController
                 array_push($uncatnotes, $tmpnote);
             }
         }
-        $notes['Unsoriert']= $uncatnotes;
+        $notes['Unsortiert']= $uncatnotes;
         foreach($usercategories as $tmpcategory){
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
@@ -128,7 +128,7 @@ class NotesController extends AbstractController
                 array_push($uncatnotes, $tmpnote);
             }
         }
-        $notes['Unsoriert']= $uncatnotes;
+        $notes['Unsortiert']= $uncatnotes;
         foreach($usercategories as $tmpcategory){
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
