@@ -146,7 +146,7 @@
                         url: "/notes/{{ currentID }}/sync",
                         type: "POST",
                         data: {
-                            "content": $("#textEditor").val(),
+                            "content": btoa($("#textEditor").val()),
                         }
                     });
                 {% endif %}
