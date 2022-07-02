@@ -46,7 +46,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'attr' => array('class' => 'btn btn-primary')
         ))
         ->getForm();
-        
 }
 public function configureOptions(OptionsResolver $resolver): void
 {
