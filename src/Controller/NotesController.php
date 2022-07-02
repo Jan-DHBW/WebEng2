@@ -87,7 +87,7 @@ class NotesController extends AbstractController
     /**
     * @Route("/notes/{id}/sync")
     */
-    public function sync(Request $request): Response
+    public function sync(EntityManagerInterface $entityManager, Request $request): Response
     {
         // return the request as json
         /*
