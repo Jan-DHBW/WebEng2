@@ -192,8 +192,8 @@ class NotesController extends AbstractController
         $invitationform = $this->createForm(InvitationFormType::class, $newInvTask);
         $invitationform->handleRequest($request);
         if ($invitationform->isSubmitted() && $invitationform->isValid()) {
-            if($newInvTask->getadd != NULL){
-                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getadd()]);
+            if($newInvTask->getAdd() != NULL){
+                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getAdd()]);
                 if($Invitee == NULL){
                     return $this->redirectToRoute('notes');
                 }
@@ -205,8 +205,8 @@ class NotesController extends AbstractController
                 $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
             }
-            if($newInvTask->getdelete != NULL){
-                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getdelete()]);
+            if($newInvTask->getRemove() != NULL){
+                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getRemove()]);
                 if($Invitee == NULL){
                     return $this->redirectToRoute('notes');
                 }
