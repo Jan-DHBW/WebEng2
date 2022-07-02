@@ -231,6 +231,7 @@ class NotesController extends AbstractController
             'notes' => $notes,
             'currentNote' => $currentnote,
             'usercategories' => $usercategories,
+            'invitationform' => $invitationform->createView(),
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
             'move_note' => $movenoteform->createView(),
