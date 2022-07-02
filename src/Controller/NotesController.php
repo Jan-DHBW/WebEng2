@@ -58,8 +58,8 @@ class NotesController extends AbstractController
             $notes[$catname] = $tmpcategory->getNotes();
         }
         $invitearray= array();
-        $allinviations = $user->getInvitedto();
-        array_splice($allinviations->getValues(), 0, 0, $user->getInvitaions());
+        $allinviations = array();
+        array_splice($allinviations, 0, 0, $user->getInvitaions()->getValues());
         foreach($allinviations as $tmpinv){
         if($tmpinv->getNote() != NULL){
                 array_push($invitearray, $tmpinv->getNote());
