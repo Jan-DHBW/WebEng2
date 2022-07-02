@@ -9,10 +9,13 @@
       <div class="modal-body text-dark">
         Die Notiz wird unwiderruflich gelöscht. Möchtest du fortfahren?
       </div>
+      {{ form_start(delete_note) }}
+      {{ form_row(delete_note.save) }}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-        <!--TODO Add form to delete note-->
-        <button type="button" class="btn btn-danger">Löschen</button>
+        {{ form_end(delete_note) }}
+        
+        
       </div>
     </div>
   </div>
