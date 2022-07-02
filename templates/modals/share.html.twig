@@ -7,30 +7,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-dark">
-        <div class="input-group">
-          Benutzer zu Notiz hinzufügen:
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="user@example.com" aria-label="E-Mail Adresse" aria-describedby="add-mail">
-            <button class="btn btn-outline-success" type="button" id="add-mail">Hinzufügen</button>
-          </div>
-        </div>
-        <div class="input-group">
-          Hinzugefügte Benutzer verwalten:
-          <div class="input-group mb-3">
-            <select class="form-select" id="inputGroupSelect04" aria-label="Nutzer auswählen">
-              <option selected>Wähle...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <button class="btn btn-outline-danger" type="button">Entfernen</button>
-          </div>
-        </div>
+        {{form_start(invitationform)}}
+        {{form_row(invitationform.add)}}
+        {{form_row(invitationform.remove)}}
+        {{form_row(invitationform.save)}}
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
-        <!--TODO Add form to share note-->
-        <button type="button" class="btn btn-success">Bestätigen</button>
       </div>
     </div>
   </div>
