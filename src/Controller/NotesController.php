@@ -92,13 +92,11 @@ class NotesController extends AbstractController
     */
     public function sync(EntityManagerInterface $entityManager, Request $request): Response
     {
-        // return the request as json
-        /*
-        data: {
-            "content": $("#textEditor").val(),
-        }
-        */
         $content = $request->request->get('content') ?? '';
+        // return if contains non base64 characters
+        if(!preg_match('/^[a-zA-Z0-9+\/=]+$/', $content)){
+            return new Response('Invalid input', 400);
+        }
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         if($currentnote == NULL){ return new Response('Note not found', 404); }
         $currentnote->setContent("$content");

@@ -42,9 +42,7 @@
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
             <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentID is defined %} disabled {% endif %}>
-                {% if content is defined %} {{ content }} 
-                {% else %} #TODO: Notiz erstellen
-                {% endif %}
+                {% if not content is defined %} #TODO: Notiz erstellen {% endif %}
             </textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
@@ -130,6 +128,13 @@
         // bootstrap workarround
         $("#btnLogout").css("border-width", "0px");
         $("#btnShare").css("border-width", "0px");
+
+        let content = "{{ content }}";
+        // remove all non base64 characters
+        content = content.replace(/[^a-zA-Z0-9\+\/\=]/g, "");
+        // decode base64
+        content = atob(content);
+        $("#textEditor").text(content);
 
         let nextSync = 0;
         $("#textEditor").on("input", function () {
