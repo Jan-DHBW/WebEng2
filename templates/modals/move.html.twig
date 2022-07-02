@@ -8,12 +8,10 @@
       </div>
       <div class="modal-body text-dark">
         Verschieben nach:
-        <select class="form-select" aria-label="Neue Kategorie">
-            {% for category in notes|keys %}
-                <!-- TODO remove current category -->
-                <option value="TODO cat ID">{{category}}</option>
-            {% endfor %}
-        </select>
+                 {{ form_start(move_note) }}
+                 {{ form_row(move_note.category) }}
+                 {{ form_row(move_note.save) }}
+                 {{ form_end(move_note) }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>

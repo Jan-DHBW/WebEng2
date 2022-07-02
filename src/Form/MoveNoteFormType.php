@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Note;
+use App\Entity\moveTask;
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -31,12 +32,9 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
     $builder
-        ->add('title', TextType::class, array(
-            'label' => 'Titel',
-            'attr' => array('class' => 'form-control')
-        ))
         ->add('category', ChoiceType::class, [
-            'label' => 'Kategorie',
+            'label' => false,
+            'attr' => array('class' => 'form-select'),
             'choices' => $categories,
             'choice_label' => 'name',
             'choice_value' => 'id',
@@ -44,16 +42,16 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'required' => false,
         ])
         ->add('save', SubmitType::class, array(
-            'label' => 'Erstellen',
+            'label' => 'Ändern',
             'attr' => array('class' => 'btn btn-success')
         ))
-        ->getForm();
+        
     ;
 }
 public function configureOptions(OptionsResolver $resolver): void
 {
     $resolver->setDefaults([
-        'data_class' => Note::class,
+        'data_class' => moveTask::class,
     ]);
 }
 
