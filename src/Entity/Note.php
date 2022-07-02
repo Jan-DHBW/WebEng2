@@ -40,11 +40,6 @@ class Note
      */
     private $category;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="notes")
-     */
-    private $categories;
-
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -101,14 +96,6 @@ class Note
         $this->category = $category;
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Category>
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
     }
 
     public function addCategory(Category $category): self
