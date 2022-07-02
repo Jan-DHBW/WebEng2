@@ -215,7 +215,7 @@ class NotesController extends AbstractController
             }
             $invitee = $invitationform->getData()->getRemove();
             if($newInvTask->getRemove() != NULL){
-                if($Invitee == NULL){
+                if($invitee == NULL){
                     return $this->redirectToRoute('notes');
                 }
                 $invitaion = $repository->findOneBy(['owner' => $user->getId(), 'note' => $request->get('id')]);
