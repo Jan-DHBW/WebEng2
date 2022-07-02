@@ -1,8 +1,16 @@
 <?php
 
 namespace App\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class moveTask{
+
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+
     protected $note;
     protected $category;
 
