@@ -37,23 +37,21 @@ class NotesController extends AbstractController
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $allnotes = $user->getNotes();
+
         $usercategories = $user->getCategories();
-        $uncategory = array();
         $notes = array();
-        foreach($allnotes as $tmpnote){
+        $uncatnotes = array();
+        foreach($user->getNotes() as $tmpnote){
             if($tmpnote->getCategory() == NULL){
-                array_push($uncategory, $tmpnote->getTitle());
+                array_push($uncatnotes, $tmpnote);
             }
         }
-        $notes['Unsoriert']= $uncategory;
+        $notes['Unsoriert']= $uncatnotes;
         foreach($usercategories as $tmpcategory){
-            $tmpname = $tmpcategory->getName();
-            ${"$tmpname"} = array();
-            foreach($tmpcategory->getNotes() as $tmpnote){
-                array_push(${"$tmpname"}, $tmpnote->getTitle());
-            }
-            array_push($notes, ${"$tmpname"});
+            $catname = $tmpcategory->getName();
+            $notes[$catname] = $tmpcategory->getNotes();
         }
+
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
         $noteform->handleRequest($request);
@@ -103,6 +101,9 @@ class NotesController extends AbstractController
         $user = $this->getUser();
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $currentnote->getContent();
+        if($content == NULL){
+            return $this->redirectToRoute('notes');
+        }
         if($currentnote->getOwner() != $user){
             return $this->redirectToRoute('notes');
         }
