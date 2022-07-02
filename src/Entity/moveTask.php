@@ -4,7 +4,7 @@ namespace App\Entity;
 
 class moveTask{
     protected $note;
-    protected $newcategory;
+    protected $category;
 
     public function getNote(): ?Note
     {
@@ -14,12 +14,12 @@ class moveTask{
     {
         $this->note = $note;
     }
-    public function getNewcategory(): ?Category
+    public function getcategory(): ?Category
     {
-        return $this->newcategory;
+        return $this->category;
     }
-    public function setNewcategory(?Category $newcategory): void
+    public function setcategory(?Category $newcategory): void
     {
-        $this->newcategory = $newcategory;
+        $this->category = $newcategory;
     }
 }
