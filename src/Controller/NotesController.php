@@ -14,7 +14,9 @@ use App\Form\RegistrationFormType;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Note;
+use App\Entity\moveType;
 use App\Entity\Invitaion;
+use App\Entity\moveTask;
 use App\Form\NewCatFormType;
 use App\Form\MoveNoteFormType;
 
@@ -118,12 +120,6 @@ class NotesController extends AbstractController
             $notes[$catname] = $tmpcategory->getNotes();
         }
 
-
-
-
-
-
-
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
         $noteform->handleRequest($request);
@@ -133,7 +129,9 @@ class NotesController extends AbstractController
             $entityManager->persist($newnote);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            return $this->redirectToRoute('notes/'.$request->get('id'));
+            $url = $this->generateUrl('notes');
+            $url = $url.'/'.$request->get('id');
+            return $this->redirect($url);
         }
         $newcat = new Category();
         $catform = $this->createForm(NewCatFormType::class, $newcat);
@@ -143,9 +141,12 @@ class NotesController extends AbstractController
             $entityManager->persist($newcat);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            return $this->redirectToRoute('notes/'.$request->get('id'));
+            $url = $this->generateUrl('notes');
+            $url = $url.'/'.$request->get('id');
+            return $this->redirect($url);
         }
-        $movenoteform = $this->createForm(MoveNoteFormType::class);
+        $movenote = new moveTask();
+        $movenoteform = $this->createForm(MoveNoteFormType::class, $movenote);
         $movenoteform->handleRequest($request);
         if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
