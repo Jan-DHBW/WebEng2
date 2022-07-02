@@ -200,6 +200,9 @@ class NotesController extends AbstractController
                 $newInvitation->addInvitee($Invitee);
                 $newInvitation->setOwner($user);
                 $newInvitation->setNote($currentnote);
+
+                echo 'This is a simple php popup window.';
+
                 $entityManager->persist($newInvitation);
                 $url = $this->generateUrl('notes');
                 $url = $url.'/'.$request->get('id');
