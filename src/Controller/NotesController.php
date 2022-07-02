@@ -91,7 +91,7 @@ class NotesController extends AbstractController
     {
         // return the request as json
         print_r($request->request->all());
-        return Null;
+        return "hier muss iwas rein";
         //return $this->json($request->request->all());
     }
     /**
