@@ -31,7 +31,7 @@ class Category
     private $owner;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Note::class, inversedBy="categories")
+     * @ORM\OneToMany(targetEntity=Note::class, mappedBy="category")
      */
     private $notes;
 
