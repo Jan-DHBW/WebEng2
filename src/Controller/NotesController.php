@@ -90,7 +90,8 @@ class NotesController extends AbstractController
     public function sync(Request $request): Response
     {
         // return the request as json
-        return $this->json($request->request->all());
+        print_r($request->request->all());
+        //return $this->json($request->request->all());
     }
     /**
     * @Route("/notes/{id}", name="notes{id}")
