@@ -138,7 +138,7 @@
             $("#textEditor").text(content);
             // refresh preview after delay
             setTimeout(function() {
-                $("#textEditor").trigger("change");
+                $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
             }, 1000);
 
             let nextSync = 0;
