@@ -197,7 +197,7 @@ class NotesController extends AbstractController
                 if($Invitee == NULL){
                     return $this->redirectToRoute('notes');
                 }
-                $newInvitation->setInvitee($Invitee);
+                $newInvitation->addInvitee($Invitee);
                 $newInvitation->setInviter($user);
                 $newInvitation->setNote($currentnote);
                 $entityManager->persist($newInvitation);
