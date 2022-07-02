@@ -42,8 +42,8 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'required' => true,
         ])
         ->add('save', SubmitType::class, array(
-            'label' => 'Änder',
-            'attr' => array('class' => 'btn btn-success')
+            'label' => 'Verschieben',
+            'attr' => array('class' => 'btn btn-secondary')
         ))
         ->getForm();
         
