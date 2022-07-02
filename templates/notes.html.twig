@@ -54,13 +54,13 @@
         <div class="col overflow-auto scrollbar scrollbar-primary h-75 mb-2" style="overflow-y: scroll; max-height:90vh;">
             {% for category,_notes in notes %}
                 <ul class="list-group mb-2" >
-                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center {% if currentNote is defined and currentNote.getCategory().getName() == category %}collapsed{% endif %}" 
+                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" 
                         data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" 
                         aria-expanded="false" 
                         aria-controls="category_{{ loop.index0 }}">
                         {{ category }}
                     </a>
-                    <div class="collapse" id="category_{{ loop.index0 }}">
+                    <div class="collapse {% if currentNote is defined and currentNote.getCategory().getName() == category %}show{% endif %}" id="category_{{ loop.index0 }}">
                         {% for note in _notes %}
                             <a href='/notes/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
                         {% endfor %}
