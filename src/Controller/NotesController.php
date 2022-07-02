@@ -170,6 +170,17 @@ class NotesController extends AbstractController
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
             return $this->redirect($url);
+        }   
+        $deletenote = new deleteTask();
+        $deletenoteform = $this->createForm(DeleteNoteFormType::class, $deletenote);
+        $deletenoteform->handleRequest($request);
+        if ($deletenoteform->isSubmitted() && $deletenoteform->isValid()) {
+            $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
+            $entityManager->remove($note);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            $url = $this->generateUrl('notes');
+            return $this->redirectToRoute($url);
         }
 
         return $this->render('notes.html.twig', [
