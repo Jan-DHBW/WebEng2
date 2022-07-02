@@ -41,7 +41,9 @@
 <div id="main" class="row container-fluid h-100 text-white" style="overflow: hidden;">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white"></textarea>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white">
+                {% if content is defined %} {{ content }} {% endif %}
+            </textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
         <iframe src="../preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
@@ -54,8 +56,7 @@
                         {{ category }}
                     </a>
                     <div class="collapse" id="category_{{ loop.index0 }}">
-                        {% for note in _notes %}                         
-                            <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">...</a>-->
+                        {% for note in _notes %}
                             <a href='/notes/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
                         {% endfor %}
                     </div>
