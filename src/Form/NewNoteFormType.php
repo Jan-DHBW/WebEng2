@@ -32,7 +32,7 @@ class NewNoteFormType extends AbstractType{
         $builder
             ->add('title', TextType::class, array(
                 'label' => 'Titel',
-                'attr' => array('class' => 'form-control')
+                'attr' => array('class' => 'form-select')
             ))
             ->add('category', ChoiceType::class, [
                 'label' => 'Kategorie',
