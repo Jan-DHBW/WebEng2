@@ -189,7 +189,8 @@ class NotesController extends AbstractController
 
         $newInvitation = new Invitaion();
         $newInvTask = new invTask();
-        $invitationform = $this->createForm(InvitationFormType::class, $newInvTask);
+        $invitees = ($entityManager->getRepository(Invitaion::class)->findOneBy(['owner_id' => $user->getId(), 'note_id' => $request->get('id')]))->getInvitee();
+        $invitationform = $this->createForm(InvitationFormType::class, $newInvTask, ['invitees' => $invitees]);
         $invitationform->handleRequest($request);
         if ($invitationform->isSubmitted() && $invitationform->isValid()) {
             if($newInvTask->getAdd() != NULL){

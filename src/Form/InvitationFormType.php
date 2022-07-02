@@ -33,6 +33,11 @@ public function __construct(Security $security)
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $currentInvitations = $user->getInvitaions();
+    foreach($currentInvitations as $invitation){
+        if($currID == $invitation->getId()){
+            $inivtees = $invitation->getTasks();
+        }
+    }
     $builder
         ->add('add', TextType::class, array(
             'label' => 'Email zum Hinzufügen',
@@ -42,7 +47,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
         ->add('remove', ChoiceType::class, array(
             'label' => false,
             'attr' => array('class' => 'form-select'),
-            'choices' => $currentInvitations,
+            'choices' => $options['invitees'],
             'choice_value' => 'id',
             'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
             'required' => false,
@@ -57,6 +62,7 @@ public function configureOptions(OptionsResolver $resolver): void
 {
     $resolver->setDefaults([
         'data_class' => invTask::class,
+        'invitees' => array(),
     ]);
 }
 
