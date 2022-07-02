@@ -156,7 +156,6 @@ class NotesController extends AbstractController
             $url = $url.'/'.$request->get('id');
             return $this->redirect($url);
         }
-        print_r($movenoteform);
 
         return $this->render('notes.html.twig', [
             'content' => $content,
