@@ -39,14 +39,9 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'choice_label' => 'name',
             'choice_value' => 'id',
             'placeholder' => 'Wähle eine Kategorie',
-            'required' => false,
+            'required' => true,
         ])
-        ->add('save', SubmitType::class, array(
-            'label' => 'Ändern',
-            'attr' => array('class' => 'btn btn-success')
-        ))
-        
-    ;
+           ;
 }
 public function configureOptions(OptionsResolver $resolver): void
 {
