@@ -157,10 +157,6 @@
             // decode base64
             content = atob(content);
             $("#textEditor").text(content);
-            // refresh preview after delay
-            setTimeout(function() {
-                $("#textEditor").trigger("input");
-            }, 500);
 
             let nextSync = 0;
             $("#textEditor").on("input", function () {
@@ -182,6 +178,11 @@
                 }
             });
         {% endif %}
+
+        // initial refresh preview after delay
+        setTimeout(function() {
+            $("#textEditor").trigger("input");
+        }, 500);
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
