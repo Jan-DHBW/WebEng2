@@ -60,7 +60,11 @@
                         aria-controls="category_{{ loop.index0 }}">
                         {{ category }}
                     </a>
-                    <div class="collapse {% if currentNote is defined and currentNote.getCategory().getName() == category %}show{% endif %}" id="category_{{ loop.index0 }}">
+                    <!-- collapse category in which our current note is in -->
+                    <div class="collapse {% if currentNote is defined and 
+                        ((category == 'Unsortiert' and currentNote.getCategory() is null) or
+                         (currentNote.getCategory().getName() == category)) %}show{% endif %}" 
+                         id="category_{{ loop.index0 }}">
                         {% for note in _notes %}
                             <a href='/notes/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
                         {% endfor %}
