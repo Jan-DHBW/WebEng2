@@ -95,10 +95,10 @@ class NotesController extends AbstractController
             "content": $("#textEditor").val(),
         }
         */
-        $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $request->request->get('content') ?? '';
+        $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         if($currentnote == NULL){ return new Response('Note not found', 404); }
-        $currentnote->setContent($content);
+        $currentnote->setContent("TEST");
         return new Response('Note synced', 200);
     }
     /**
