@@ -31,7 +31,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $builder
         ->add('save', SubmitType::class, array(
-            'label' => 'LÖSCHEN',
+            'label' => 'Löschen',
             'attr' => array('class' => 'btn btn-danger')
         ))
         ->getForm();

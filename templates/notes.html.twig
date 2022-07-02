@@ -43,9 +43,7 @@
 <div id="main" class="row container-fluid h-100 text-white" style="overflow: hidden;">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}>
-                {% if not content is defined %} # TODO: Notiz erstellen {% endif %}
-            </textarea>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}></textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
         <iframe src="../preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
@@ -54,12 +52,23 @@
         <div class="col overflow-auto scrollbar scrollbar-primary h-75 mb-2" style="overflow-y: scroll; max-height:90vh;">
             {% for category,_notes in notes %}
                 <ul class="list-group mb-2" >
-                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
+                    <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" 
+                        data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" 
+                        aria-expanded="false" 
+                        aria-controls="category_{{ loop.index0 }}">
                         {{ category }}
                     </a>
-                    <div class="collapse" id="category_{{ loop.index0 }}">
+                    <!-- collapse category in which our current note is in -->
+                    <div class="collapse {% if currentNote is defined and 
+                        ((category == 'Unsortiert' and currentNote.getCategory() is null) or
+                         (not currentNote.getCategory() is null and currentNote.getCategory().getName() == category)) %}show{% endif %}" 
+                         id="category_{{ loop.index0 }}">
                         {% for note in _notes %}
-                            <a href='/notes/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
+                            <a href='/notes/{{ note.getId() }}' 
+                                class="list-group-item list-group-item-action rounded text-white bg-dark {% if currentNote is defined and note.getId() == currentNote.getId() %}active{% endif %}"
+                                >
+                                {{ note.getTitle() }}
+                            </a>
                         {% endfor %}
                     </div>
                 </ul>
