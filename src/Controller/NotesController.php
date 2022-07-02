@@ -101,7 +101,7 @@ class NotesController extends AbstractController
         $user = $this->getUser();
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $currentnote->getContent();
-        if($content == NULL){
+        if($currentnote == NULL){
             return $this->redirectToRoute('notes');
         }
         if($currentnote->getOwner() != $user){
