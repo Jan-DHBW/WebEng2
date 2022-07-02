@@ -111,6 +111,9 @@ class NotesController extends AbstractController
         $user = $this->getUser();
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $currentnote->getContent();
+        $content = str_replace("\n", "<br>", $content);
+        $content = str_replace("\r", "", $content);
+        $content = str_replace("\t", "&nbsp;&nbsp;&nbsp;&nbsp;", $content);
         if($currentnote == NULL){
             return $this->redirectToRoute('notes');
         }
