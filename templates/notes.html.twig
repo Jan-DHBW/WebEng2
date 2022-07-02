@@ -44,7 +44,15 @@
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
             <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}>
-                {% if not content is defined %} # TODO: Notiz erstellen {% endif %}
+                # Willkommen bei NOTIZIUM
+                Erstelle deine erste Notiz unten rechts!
+                * Viel Spaß! *
+
+                \# Überschriften
+                \* Kursiv \*
+                \_ Unterstriche \_
+                \` Code \`
+                \[Linktext](https://www.example.com)
             </textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
