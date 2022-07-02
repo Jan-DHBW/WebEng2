@@ -156,7 +156,6 @@ class NotesController extends AbstractController
             $url = $url.'/'.$request->get('id');
             return $this->redirect($url);
         }
-        //print_r($movenoteform);
 
         return $this->render('notes.html.twig', [
             'content' => $content,
@@ -164,7 +163,7 @@ class NotesController extends AbstractController
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
-           // 'move_note' => $movenoteform->createView(),
+            'move_note' => $movenoteform->createView()
             //'notes2' => $form->createView()
         ]);
     }
