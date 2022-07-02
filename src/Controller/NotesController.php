@@ -204,8 +204,9 @@ class NotesController extends AbstractController
 
 
                 $entityManager->persist($newInvitation);
+                $entityManager->flush();
                 $url = $this->generateUrl('notes');
-                $url = $url.'///sasasda///'.$request->get('id');
+                $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
             }
             if($newInvTask->getRemove() != NULL){
