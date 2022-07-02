@@ -57,6 +57,14 @@ class NotesController extends AbstractController
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
         }
+        $invitearray= array();
+        $allinviations = $user->getInvitaions();
+        foreach($allinviations as $tmpinv){
+        if($tmpinv->getNote() != NULL){
+                array_push($invitearray, $tmpinv->getNote());
+            }
+        }
+        $note['Invitations'] = $invitearray;
 
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
@@ -136,6 +144,14 @@ class NotesController extends AbstractController
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
         }
+        $invitearray= array();
+        $allinviations = $user->getInvitaions();
+        foreach($allinviations as $tmpinv){
+        if($tmpinv->getNote() != NULL){
+                array_push($invitearray, $tmpinv->getNote());
+            }
+        }
+        $note['Invitations'] = $invitearray;
 
         $newnote = new Note();
         $noteform = $this->createForm(NewNoteFormType::class, $newnote);
