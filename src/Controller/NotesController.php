@@ -201,9 +201,7 @@ class NotesController extends AbstractController
                 $newInvitation->setOwner($user);
                 $newInvitation->setNote($currentnote);
 
-                echo '<script type="text/javascript">
-                        window.onload = function () { alert("Welcome"); } 
-                     </script>'; 
+
 
                 $entityManager->persist($newInvitation);
                 $url = $this->generateUrl('notes');
@@ -224,6 +222,9 @@ class NotesController extends AbstractController
                 $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
             }
+            echo '<script type="text/javascript">
+            window.onload = function () { alert("Welcome"); } 
+         </script>'; 
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
