@@ -58,7 +58,7 @@ class NotesController extends AbstractController
             $notes[$catname] = $tmpcategory->getNotes();
         }
         $invitearray= array();
-        $allinviations = $user->getInvitaions();
+        $allinviations = $user->getInvitedto();
         foreach($allinviations as $tmpinv){
         if($tmpinv->getNote() != NULL){
                 array_push($invitearray, $tmpinv->getNote());
@@ -145,7 +145,7 @@ class NotesController extends AbstractController
             $notes[$catname] = $tmpcategory->getNotes();
         }
         $invitearray= array();
-        $allinviations = $user->getInvitaions();
+        $allinviations = $user->getInvitedto();
         foreach($allinviations as $tmpinv){
         if($tmpinv->getNote() != NULL){
                 array_push($invitearray, $tmpinv->getNote());
