@@ -4,8 +4,9 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Note;
+use App\Entity\moveTask;
 use App\Entity\Category;
-use App\Entity\deleteTask;
+use App\Entity\Invitaion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +21,8 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class DeleteNoteFormType extends AbstractType{
+
+class InvitationFormType extends AbstractType{
 
 private $security;
 public function __construct(Security $security)
@@ -29,18 +31,22 @@ public function __construct(Security $security)
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
+    $categories = $user->getCategories();
     $builder
+        ->add('invitee', TextType::class, array(
+            'label' => 'Titel',
+            'attr' => array('class' => 'form-control')
+        ))
         ->add('save', SubmitType::class, array(
-            'label' => 'Löschen',
-            'attr' => array('class' => 'btn btn-danger')
+            'label' => 'Verschieben',
+            'attr' => array('class' => 'btn btn-primary')
         ))
         ->getForm();
-    ;
 }
 public function configureOptions(OptionsResolver $resolver): void
 {
     $resolver->setDefaults([
-        'data_class' => deleteTask::class,
+        'data_class' => Invitaion::class,
     ]);
 }
 
