@@ -200,6 +200,7 @@ class NotesController extends AbstractController
                 $newInvitation->addInvitee($Invitee);
                 $newInvitation->setOwner($user);
                 $newInvitation->setNote($currentnote);
+                $newInvitation->setAccepted(TRUE);
 
 
 
