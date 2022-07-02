@@ -53,6 +53,7 @@ class NotesController extends AbstractController
         foreach($usercategories as $tmpcategory){
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
+            print(count($tmpcategory->getNotes()));
         }
 
         $newnote = new Note();
