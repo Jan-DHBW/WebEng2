@@ -17,8 +17,11 @@ use App\Entity\Note;
 use App\Entity\moveType;
 use App\Entity\Invitaion;
 use App\Entity\moveTask;
+use App\Entity\deleteTask;
 use App\Form\NewCatFormType;
 use App\Form\MoveNoteFormType;
+use App\Form\DeleteNoteFormType;
+
 
 
 class NotesController extends AbstractController
