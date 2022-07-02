@@ -59,6 +59,7 @@ class NotesController extends AbstractController
         }
         $invitearray= array();
         $allinviations = $user->getInvitedto();
+        array_splice($allinviations, 0, 0, $user->getInvitaions());
         foreach($allinviations as $tmpinv){
         if($tmpinv->getNote() != NULL){
                 array_push($invitearray, $tmpinv->getNote());
