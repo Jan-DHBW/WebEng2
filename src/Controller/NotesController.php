@@ -85,9 +85,9 @@ class NotesController extends AbstractController
     }
     // ajax post request to sync notes
     /**
-    * @Route("/notes/sync")
+    * @Route("/notes/{id}/sync")
     */
-    public function sync(Request $request): Response
+    public function sync(EntityManagerInterface $entityManager, Request $request): Response
     {
         // return the request as json
         /*
@@ -95,9 +95,11 @@ class NotesController extends AbstractController
             "content": $("#textEditor").val(),
         }
         */
-        $content = $request->request->get('content');
-        print($content);
-        return $this->json($request->request->all());
+        $content = $request->request->get('content') ?? '';
+        $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
+        if($currentnote == NULL){ return new Response('Note not found', 404); }
+        $currentnote->setContent("TEST");
+        return new Response('Note synced', 200);
     }
     /**
     * @Route("/notes/{id}", name="notes{id}")
@@ -169,6 +171,7 @@ class NotesController extends AbstractController
         return $this->render('notes.html.twig', [
             'content' => $content,
             'notes' => $notes,
+            'currentID' => $request->get('id'),
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
