@@ -32,7 +32,7 @@ public function __construct(Security $security)
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
-    $currentInvitations = $user->getInvitations();
+    $currentInvitations = $user->getInvitaions();
     $builder
         ->add('add', TextType::class, array(
             'label' => 'Titel',
