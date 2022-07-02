@@ -90,7 +90,7 @@ class NotesController extends AbstractController
     public function sync(Request $request): Response
     {
         // return the request as json
-        $content = $request->getContent()['content'] ?? '';
+        $content = $request->getContent().content ?? '';
         print($content);
         return $this->json($request->request->all());
     }
