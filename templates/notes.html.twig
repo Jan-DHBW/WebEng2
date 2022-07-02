@@ -42,7 +42,7 @@
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
             <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentID is defined %} disabled {% endif %}>
-                {% if content is defined %} {{ content }} 
+                {% if content is defined %} {{ content|base64_decode }} 
                 {% else %} #TODO: Notiz erstellen
                 {% endif %}
             </textarea>
@@ -146,7 +146,7 @@
                         url: "/notes/{{ currentID }}/sync",
                         type: "POST",
                         data: {
-                            "content": $("#textEditor").val(),
+                            "content": btoa($("#textEditor").val()),
                         }
                     });
                 {% endif %}
