@@ -67,7 +67,7 @@
                          id="category_{{ loop.index0 }}">
                         {% for note in _notes %}
                             <a href='/notes/{{ note.getId() }}' 
-                                class="list-group-item list-group-item-action text-white bg-dark {% if currentNote is defined and note.getId() == currentNote.getId() %}active{% endif %}"
+                                class="list-group-item list-group-item-action rounded text-white bg-dark {% if currentNote is defined and note.getId() == currentNote.getId() %}active{% endif %}"
                                 >
                                 {{ note.getTitle() }}
                             </a>
