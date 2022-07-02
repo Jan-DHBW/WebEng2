@@ -53,7 +53,6 @@ class NotesController extends AbstractController
         foreach($usercategories as $tmpcategory){
             $catname = $tmpcategory->getName();
             $notes[$catname] = $tmpcategory->getNotes();
-            print(count($tmpcategory->getNotes()));
         }
 
         $newnote = new Note();
@@ -187,7 +186,7 @@ class NotesController extends AbstractController
         return $this->render('notes.html.twig', [
             'content' => $content,
             'notes' => $notes,
-            'currentID' => $request->get('id'),
+            'currentNote' => $currentnote,
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
