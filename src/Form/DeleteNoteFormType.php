@@ -32,7 +32,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $builder
         ->add('save', SubmitType::class, array(
             'label' => 'LÖSCHEN',
-            'attr' => array('class' => 'btn btn-success')
+            'attr' => array('class' => 'btn btn-danger')
         ))
         ->getForm();
     ;

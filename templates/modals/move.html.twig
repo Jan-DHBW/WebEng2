@@ -6,13 +6,16 @@
         <h5 class="modal-title text-dark" id="{{target_modal}}">Notiz '{{note_name}}' verschieben</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      {{ form_start(move_note) }}
       <div class="modal-body text-dark">
         Verschieben nach:
-        {{ form_start(move_note) }}
         {{ form_row(move_note.category) }}
-        {{ form_row(move_note.save) }}
-        {{ form_end(move_note) }}
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+        {{ form_row(move_note.save) }}
+      </div>
+      {{ form_end(move_note) }}
     </div>
   </div>
 </div>
