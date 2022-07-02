@@ -15,18 +15,20 @@
         </svg>
         <h4 class="text-white">NOTIZIUM</h4>
         <div>
-            <button id="btnShare" type="button" class="btn text-white btn-outline-info" data-bs-toggle="modal" data-bs-target="#shareModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16"
-                    data-toggle="tooltip" data-bs-placement="bottom" title="Diese Notiz teilen">
-                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-                </svg>
-            </button>
-            {% set vars = {
-                target_modal: 'shareModal',
-                note_name: 'TODO',
-                note_id: 'TODO3',
-            } %}
-            {% include 'modals/share.html.twig' with vars %}
+            {% if currentNote is defined %}
+                <button id="btnShare" type="button" class="btn text-white btn-outline-info" data-bs-toggle="modal" data-bs-target="#shareModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16"
+                        data-toggle="tooltip" data-bs-placement="bottom" title="Diese Notiz teilen">
+                        <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                    </svg>
+                </button>
+                {% set vars = {
+                    target_modal: 'shareModal',
+                    note_name: '{{currentNote.getTitle()}}',
+                    note_id: '{{currentNote.getId()}}',
+                } %}
+                {% include 'modals/share.html.twig' with vars %}
+            {% endif %}
 
             <button id="btnLogout" type="button" class="btn text-white btn-outline-danger" onclick="location.href='/logout'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"
@@ -41,7 +43,7 @@
 <div id="main" class="row container-fluid h-100 text-white" style="overflow: hidden;">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentID is defined %} disabled {% endif %}>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}>
                 {% if not content is defined %} # TODO: Notiz erstellen {% endif %}
             </textarea>
         </div>
@@ -96,8 +98,8 @@
                 </button>
                 {% set vars = {
                     target_modal: 'moveModal',
-                    note_name: 'TODO',
-                    note_id: 'TODO1',
+                    note_name: '{{currentNote.getTitle()}}',
+                    note_id: '{{currentNote.getId()}}',
                     note_category: 'TODO',
                 } %}
                 {% include 'modals/move.html.twig' with vars %}
@@ -111,8 +113,8 @@
                 </button>
                 {% set vars = {
                     target_modal: 'deleteModal',
-                    note_name: 'TODO',
-                    note_id: 'TODO2',
+                    note_name: '{{currentNote.getTitle()}}',
+                    note_id: '{{currentNote.getId()}}',
                 } %}
                 {% include 'modals/delete.html.twig' with vars %}
             {% endif %}
@@ -129,7 +131,7 @@
         $("#btnLogout").css("border-width", "0px");
         $("#btnShare").css("border-width", "0px");
 
-        {% if currentID is defined %}
+        {% if currentNote is defined %}
             let content = "{{ content }}";
             // remove all non base64 characters
             content = content.replace(/[^a-zA-Z0-9\+\/\=]/g, "");
@@ -152,7 +154,7 @@
                         $('#topBarLoadingSpinner').fadeOut(function () { $('#topBarSyncedIcon').fadeIn(); });
                     }, 1000);
                     $.ajax({
-                        url: "/notes/{{ currentID }}/sync",
+                        url: "/notes/{{ currentNote.getId() }}/sync",
                         type: "POST",
                         data: {
                             "content": btoa($("#textEditor").val()),
