@@ -213,11 +213,11 @@ class NotesController extends AbstractController
                 $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
             }
+            $invitee = $invitationform->getData()->getRemove();
             if($newInvTask->getRemove() != NULL){
                 if($Invitee == NULL){
                     return $this->redirectToRoute('notes');
                 }
-                $invitee = $invitationform->getData()->getRemove();
                 $invitaion = $repository->findOneBy(['owner' => $user->getId(), 'note' => $request->get('id')]);
                 $invitaion->removeInvitee($invitee);
                 $entityManager->flush();
