@@ -43,17 +43,7 @@
 <div id="main" class="row container-fluid h-100 text-white" style="overflow: hidden;">
     <div id="content" class="col-10 row">
         <div id="editor" class="col-md w-50 h-100">
-            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}>
-                # Willkommen bei NOTIZIUM
-                Erstelle deine erste Notiz unten rechts!
-                * Viel Spaß! *
-
-                \# Überschriften
-                \* Kursiv \*
-                \_ Unterstriche \_
-                \` Code \`
-                \[Linktext](https://www.example.com)
-            </textarea>
+            <textarea id="textEditor" class="rounded p-3 w-100 h-100 bg-dark scrollbar scrollbar-primary text-white" {% if not currentNote is defined %} disabled {% endif %}></textarea>
         </div>
         <!--<div id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></div>-->
         <iframe src="../preview.html" id="preview" class="rounded p-3 mb-2 bg-dark col-md h-100 w-50" style="overflow-wrap:break-word; overflow:hidden;"></iframe>
@@ -157,6 +147,10 @@
             // decode base64
             content = atob(content);
             $("#textEditor").text(content);
+            // refresh preview after delay
+            setTimeout(function() {
+                $("#textEditor").trigger("input");
+            }, 500);
 
             let nextSync = 0;
             $("#textEditor").on("input", function () {
@@ -177,12 +171,13 @@
                     });
                 }
             });
+        {% else %}
+            $("#textEditor").text("IyBXaWxsa29tbWVuIGJlaSBOT1RJWklVTQpFcnN0ZWxsZSBkZWluZSBlcnN0ZSBOb3RpeiB1bnRlbiByZWNodHMhCiogVmllbCBTcGHDnyEgKgoKXCMgw5xiZXJzY2hyaWZ0ZW4KXCogS3Vyc2l2IFwqClxfIFVudGVyc3RyaWNoZSBcXwpcYCBDb2RlIFxgClxbTGlua3RleHRdKGh0dHBzOi8vd3d3LmV4YW1wbGUuY29tKQ==");
+            // refresh preview after delay
+            setTimeout(function() {
+                $("#textEditor").trigger("input");
+            }, 500);
         {% endif %}
-
-        // initial refresh preview after delay
-        setTimeout(function() {
-            $("#textEditor").trigger("input");
-        }, 500);
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
