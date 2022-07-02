@@ -17,8 +17,11 @@ use App\Entity\Note;
 use App\Entity\moveType;
 use App\Entity\Invitaion;
 use App\Entity\moveTask;
+use App\Entity\deleteTask;
 use App\Form\NewCatFormType;
 use App\Form\MoveNoteFormType;
+use App\Form\DeleteNoteFormType;
+
 
 
 class NotesController extends AbstractController
@@ -178,8 +181,8 @@ class NotesController extends AbstractController
             $entityManager->remove($note);
             $entityManager->flush();
             // do anything else you need here, like send an email
-            $url = $this->generateUrl('notes');
-            return $this->redirectToRoute($url);
+
+            return $this->redirectToRoute('notes');
         }
 
         return $this->render('notes.html.twig', [
@@ -189,7 +192,8 @@ class NotesController extends AbstractController
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
-            'move_note' => $movenoteform->createView()
+            'move_note' => $movenoteform->createView(),
+            'delete_note' => $deletenoteform->createView(),
             //'notes2' => $form->createView()
         ]);
     }
