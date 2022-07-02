@@ -23,6 +23,7 @@ use App\Form\MoveNoteFormType;
 use App\Form\DeleteNoteFormType;
 use App\Form\InvitationFormType;
 use App\Entity\Invitation;
+use App\Entity\invTask;
 
 
 
@@ -187,13 +188,37 @@ class NotesController extends AbstractController
         //Create Invitaion Form 
 
         $newInvitation = new Invitaion();
-        $invitationform = $this->createForm(InvitationFormType::class, $newInvitation);
+        $newInvTask = new invTask();
+        $invitationform = $this->createForm(InvitationFormType::class, $newInvTask);
         $invitationform->handleRequest($request);
         if ($invitationform->isSubmitted() && $invitationform->isValid()) {
-            $newInvitation->setNote($currentnote);
-            $newInvitation->setOwner($user);
-            $entityManager->persist($newInvitation);
-            $entityManager->flush();
+            if($newInvTask->getadd != NULL){
+                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getadd()]);
+                if($Invitee == NULL){
+                    return $this->redirectToRoute('notes');
+                }
+                $newInvitation->setInvitee($Invitee);
+                $newInvitation->setInviter($user);
+                $newInvitation->setNote($currentnote);
+                $entityManager->persist($newInvitation);
+                $url = $this->generateUrl('notes');
+                $url = $url.'/'.$request->get('id');
+                return $this->redirect($url);
+            }
+            if($newInvTask->getdelete != NULL){
+                $Invitee = $entityManager->getRepository(User::class)->findOneBy(['email' => $newInvTask->getdelete()]);
+                if($Invitee == NULL){
+                    return $this->redirectToRoute('notes');
+                }
+                $invitation = $entityManager->getRepository(Invitaion::class)->findOneBy(['invitee' => $Invitee, 'note' => $currentnote]);
+                if($invitation == NULL){
+                    return $this->redirectToRoute('notes');
+                }
+                $entityManager->remove($invitation);
+                $url = $this->generateUrl('notes');
+                $url = $url.'/'.$request->get('id');
+                return $this->redirect($url);
+            }
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
@@ -206,6 +231,7 @@ class NotesController extends AbstractController
             'notes' => $notes,
             'currentNote' => $currentnote,
             'usercategories' => $usercategories,
+            'invitationform' => $invitationform->createView(),
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
             'move_note' => $movenoteform->createView(),
