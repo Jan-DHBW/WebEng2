@@ -163,7 +163,7 @@ class NotesController extends AbstractController
             'usercategories' => $usercategories,
             'create_cat' => $catform->createView(),
             'create_note' => $noteform->createView(),
-            'move_note' => $movenoteform->createView(),
+            'move_note' => $movenoteform->createView()
             //'notes2' => $form->createView()
         ]);
     }
