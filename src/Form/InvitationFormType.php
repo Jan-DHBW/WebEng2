@@ -43,6 +43,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'label' => 'Test',
             'attr' => array('class' => 'form-select'),
             'choices' => $options['invitees'],
+            'choice_label' => 'email',
             'choice_value' => 'id',
             'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
             'required' => false,
