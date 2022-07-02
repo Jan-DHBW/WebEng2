@@ -129,24 +129,26 @@
         $("#btnLogout").css("border-width", "0px");
         $("#btnShare").css("border-width", "0px");
 
-        let content = "{{ content }}";
-        // remove all non base64 characters
-        content = content.replace(/[^a-zA-Z0-9\+\/\=]/g, "");
-        // decode base64
-        content = atob(content);
-        $("#textEditor").text(content);
-
-        let nextSync = 0;
-        $("#textEditor").on("input", function () {
-            // set content of preview
+        {% if currentID is defined %}
+            let content = "{{ content }}";
+            // remove all non base64 characters
+            content = content.replace(/[^a-zA-Z0-9\+\/\=]/g, "");
+            // decode base64
+            content = atob(content);
+            $("#textEditor").text(content);
+            // refresh preview 
             $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
-            if (nextSync < Date.now()) {
-                nextSync = Date.now() + 1000;
-                $('#topBarSyncedIcon').fadeOut(function () { $('#topBarLoadingSpinner').fadeIn(); });
-                setTimeout(function() {
-                    $('#topBarLoadingSpinner').fadeOut(function () { $('#topBarSyncedIcon').fadeIn(); });
-                }, 1000);
-                {% if currentID is defined %}
+
+            let nextSync = 0;
+            $("#textEditor").on("input", function () {
+                // set content of preview
+                $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
+                if (nextSync < Date.now()) {
+                    nextSync = Date.now() + 1000;
+                    $('#topBarSyncedIcon').fadeOut(function () { $('#topBarLoadingSpinner').fadeIn(); });
+                    setTimeout(function() {
+                        $('#topBarLoadingSpinner').fadeOut(function () { $('#topBarSyncedIcon').fadeIn(); });
+                    }, 1000);
                     $.ajax({
                         url: "/notes/{{ currentID }}/sync",
                         type: "POST",
@@ -154,9 +156,9 @@
                             "content": btoa($("#textEditor").val()),
                         }
                     });
-                {% endif %}
-            }
-        });
+                }
+            });
+        {% endif %}
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
