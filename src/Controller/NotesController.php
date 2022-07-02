@@ -21,6 +21,8 @@ use App\Entity\deleteTask;
 use App\Form\NewCatFormType;
 use App\Form\MoveNoteFormType;
 use App\Form\DeleteNoteFormType;
+use App\Form\InvitationFormType;
+use App\Entity\Invitation;
 
 
 
@@ -182,6 +184,22 @@ class NotesController extends AbstractController
 
             return $this->redirectToRoute('notes');
         }
+        //Create Invitaion Form 
+
+        $newInvitation = new Invitaion();
+        $invitationform = $this->createForm(InvitationFormType::class, $newInvitation);
+        $invitationform->handleRequest($request);
+        if ($invitationform->isSubmitted() && $invitationform->isValid()) {
+            $newInvitation->setNote($currentnote);
+            $newInvitation->setOwner($user);
+            $entityManager->persist($newInvitation);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+            $url = $this->generateUrl('notes');
+            $url = $url.'/'.$request->get('id');
+            return $this->redirect($url);
+        }
+
 
         return $this->render('notes.html.twig', [
             'content' => $content,
