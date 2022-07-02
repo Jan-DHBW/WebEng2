@@ -172,7 +172,7 @@
                 }
             });
         {% else %}
-            $("#textEditor").text("IyBXaWxsa29tbWVuIGJlaSBOT1RJWklVTQpFcnN0ZWxsZSBkZWluZSBlcnN0ZSBOb3RpeiB1bnRlbiByZWNodHMhCiogVmllbCBTcGHDnyEgKgoKXCMgw5xiZXJzY2hyaWZ0ZW4KXCogS3Vyc2l2IFwqClxfIFVudGVyc3RyaWNoZSBcXwpcYCBDb2RlIFxgClxbTGlua3RleHRdKGh0dHBzOi8vd3d3LmV4YW1wbGUuY29tKQ==");
+            $("#textEditor").text(atob("IyBXaWxsa29tbWVuIGJlaSBOT1RJWklVTQpFcnN0ZWxsZSBkZWluZSBlcnN0ZSBOb3RpeiB1bnRlbiByZWNodHMhCiogVmllbCBTcGHDnyEgKgoKXCMgw5xiZXJzY2hyaWZ0ZW4KXCogS3Vyc2l2IFwqClxfIFVudGVyc3RyaWNoZSBcXwpcYCBDb2RlIFxgClxbTGlua3RleHRdKGh0dHBzOi8vd3d3LmV4YW1wbGUuY29tKQ=="));
             // refresh preview after delay
             setTimeout(function() {
                 $("#textEditor").trigger("input");
