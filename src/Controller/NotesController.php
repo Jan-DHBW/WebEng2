@@ -114,7 +114,8 @@ class NotesController extends AbstractController
         $user = $this->getUser();
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $currentnote->getContent();
-        print($content);
+        // remove all non base64 characters
+        $content = preg_replace('/[^A-Za-z0-9\+\/\=]/', '', $content);
         if($currentnote == NULL){
             return $this->redirectToRoute('notes');
         }
