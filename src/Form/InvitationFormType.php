@@ -43,7 +43,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'label' => false,
             'attr' => array('class' => 'form-select'),
             'choices' => $currentInvitations,
-            'choice_label' => 'name',
             'choice_value' => 'id',
             'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
             'required' => false,
