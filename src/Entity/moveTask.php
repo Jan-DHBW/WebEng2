@@ -13,7 +13,6 @@ class moveTask{
     public function setNote(?Note $note): void
     {
         $this->note = $note;
-        return $this;
     }
     public function getNewcategory(): ?Category
     {
@@ -22,6 +21,5 @@ class moveTask{
     public function setNewcategory(?Category $newcategory): void
     {
         $this->newcategory = $newcategory;
-        return $this;
     }
 }
