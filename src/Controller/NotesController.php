@@ -152,7 +152,7 @@ class NotesController extends AbstractController
         $movenoteform->handleRequest($request);
         if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
-            $note->setCategory($movenoteform['category']->getData());
+            $note->setCategory($movenote->getcategory());
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
