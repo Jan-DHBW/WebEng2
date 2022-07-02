@@ -189,7 +189,7 @@ class NotesController extends AbstractController
 
         $newInvitation = new Invitaion();
         $newInvTask = new invTask();
-        $invitationform = $this->createForm(InvitationFormType::class, $newInvitation);
+        $invitationform = $this->createForm(InvitationFormType::class, $newInvTask);
         $invitationform->handleRequest($request);
         if ($invitationform->isSubmitted() && $invitationform->isValid()) {
             if($newInvTask->getadd != NULL){
