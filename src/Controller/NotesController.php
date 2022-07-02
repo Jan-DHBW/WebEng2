@@ -195,29 +195,4 @@ class NotesController extends AbstractController
             //'notes2' => $form->createView()
         ]);
     }
-    /**
-    * @Route("/notes/new", name="newCat")
-    */
-    public function newCat(Request $request): Response
-    {
-        $cat = new Category();
-        $user  = $this->getUser();
-        $form = $this->createForm(NewCatFormType::class, $cat);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $cat = $form->getData();
-            $cat->setOwner($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($cat);
-            $em->flush();
-            return $this->redirectToRoute('notes');
-        }
-        $response = new Response();
-        $response->setContent('<html><body><h1>Ich Hasse Web Entwicklung</h1></body></html>');
-        $response->headers->set('Content-Type', 'text/html');
-        $response->setStatusCode(Response::HTTP_OK);
-        return $response
-       ;
-    }
 }
