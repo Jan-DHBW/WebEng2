@@ -36,7 +36,8 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $builder
         ->add('add', TextType::class, array(
             'label' => 'Email zum Hinzufügen',
-            'attr' => array('class' => 'form-control')
+            'attr' => array('class' => 'form-control'),
+            'required' => false,
         ))
         ->add('remove', ChoiceType::class, array(
             'label' => false,
