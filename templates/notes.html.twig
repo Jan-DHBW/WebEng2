@@ -24,8 +24,8 @@
                 </button>
                 {% set vars = {
                     target_modal: 'shareModal',
-                    note_name: '{{currentNote.getTitle()}}',
-                    note_id: '{{currentNote.getId()}}',
+                    note_name: currentNote.getTitle(),
+                    note_id: currentNote.getId(),
                 } %}
                 {% include 'modals/share.html.twig' with vars %}
             {% endif %}
@@ -98,8 +98,8 @@
                 </button>
                 {% set vars = {
                     target_modal: 'moveModal',
-                    note_name: '{{currentNote.getTitle()}}',
-                    note_id: '{{currentNote.getId()}}',
+                    note_name: currentNote.getTitle(),
+                    note_id: currentNote.getId(),
                     note_category: 'TODO',
                 } %}
                 {% include 'modals/move.html.twig' with vars %}
@@ -113,8 +113,8 @@
                 </button>
                 {% set vars = {
                     target_modal: 'deleteModal',
-                    note_name: '{{currentNote.getTitle()}}',
-                    note_id: '{{currentNote.getId()}}',
+                    note_name: currentNote.getTitle(),
+                    note_id: currentNote.getId(),
                 } %}
                 {% include 'modals/delete.html.twig' with vars %}
             {% endif %}
