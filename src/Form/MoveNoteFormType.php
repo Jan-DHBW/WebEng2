@@ -44,7 +44,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'label' => 'Ändern',
             'attr' => array('class' => 'btn btn-success')
         ))
-        ->getForm();
+        
     ;
 }
 public function configureOptions(OptionsResolver $resolver): void
