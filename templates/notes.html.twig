@@ -138,8 +138,8 @@
             $("#textEditor").text(content);
             // refresh preview after delay
             setTimeout(function() {
-                $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
-            }, 1000);
+                $("#textEditor").trigger("input");
+            }, 10);
 
             let nextSync = 0;
             $("#textEditor").on("input", function () {
