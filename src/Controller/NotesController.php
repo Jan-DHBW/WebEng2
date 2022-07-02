@@ -188,7 +188,7 @@ class NotesController extends AbstractController
         //Create Invitaion Form 
 
         $newInvitation = new Invitaion();
-        $newInvTask = new inviteTask();
+        $newInvTask = new invTask();
         $invitationform = $this->createForm(InvitationFormType::class, $newInvitation);
         $invitationform->handleRequest($request);
         if ($invitationform->isSubmitted() && $invitationform->isValid()) {
@@ -219,10 +219,6 @@ class NotesController extends AbstractController
                 $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
             }
-            $newInvitation->setNote($currentnote);
-            $newInvitation->setOwner($user);
-            $entityManager->persist($newInvitation);
-            $entityManager->flush();
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
             $url = $url.'/'.$request->get('id');
