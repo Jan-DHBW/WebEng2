@@ -136,8 +136,10 @@
             // decode base64
             content = atob(content);
             $("#textEditor").text(content);
-            // refresh preview
-            $("#textEditor").trigger("change");
+            // refresh preview after delay
+            setTimeout(function() {
+                $("#textEditor").trigger("change");
+            }, 1000);
 
             let nextSync = 0;
             $("#textEditor").on("input", function () {
