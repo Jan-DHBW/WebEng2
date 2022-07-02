@@ -42,7 +42,8 @@ public function buildForm(FormBuilderInterface $builder, array $options){
         ->add('remove', ChoiceType::class, array(
             'label' => false,
             'attr' => array('class' => 'form-select'),
-            'choices' => $currentInvitations,
+            'choices' => $options['invitees'],
+            'choice_label' => 'name',
             'choice_value' => 'id',
             'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
             'required' => false,
@@ -57,6 +58,7 @@ public function configureOptions(OptionsResolver $resolver): void
 {
     $resolver->setDefaults([
         'data_class' => invTask::class,
+        'invitees' => array(),
     ]);
 }
 

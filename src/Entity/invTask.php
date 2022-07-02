@@ -14,6 +14,11 @@ class invTask{
 
     protected $add;
     protected $remove;
+    protected $currID;
+
+    public function  setcurrID($id){
+        $this->currID = $id;
+    }
 
     public function getAdd()    
     {
