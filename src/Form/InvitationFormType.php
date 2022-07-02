@@ -40,7 +40,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'required' => false,
         ))
         ->add('remove', ChoiceType::class, array(
-            'label' => false,
+            'label' => 'Test',
             'attr' => array('class' => 'form-select'),
             'choices' => $options['invitees'],
             'choice_value' => 'id',
