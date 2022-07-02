@@ -96,9 +96,10 @@ class NotesController extends AbstractController
         }
         */
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
-        $content = $request->request->get('content');
+        $content = $request->request->get('content') ?? '';
         if($currentnote == NULL){ return new Response('Note not found', 404); }
-        return $this->json($request->request->all());
+        $currentnote->setContent($content);
+        return new Response('Note synced', 200);
     }
     /**
     * @Route("/notes/{id}", name="notes{id}")
