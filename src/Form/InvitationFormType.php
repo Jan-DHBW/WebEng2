@@ -35,7 +35,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $currentInvitations = $user->getInvitaions();
     $builder
         ->add('add', TextType::class, array(
-            'label' => 'Titel',
+            'label' => 'Email zum Hinzufügen',
             'attr' => array('class' => 'form-control')
         ))
         ->add('remove', ChoiceType::class, array(
@@ -44,7 +44,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'choices' => $currentInvitations,
             'choice_label' => 'name',
             'choice_value' => 'id',
-            'placeholder' => 'Hier den zu entfrennden Eintrag auswählen',
+            'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
             'required' => false,
         ))
         ->add('save', SubmitType::class, array(
