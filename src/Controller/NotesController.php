@@ -220,6 +220,7 @@ class NotesController extends AbstractController
                     return $this->redirectToRoute('notes');
                 }
                 $entityManager->remove($invitation);
+                $entityManager->flush();
                 $url = $this->generateUrl('notes');
                 $url = $url.'/'.$request->get('id');
                 return $this->redirect($url);
