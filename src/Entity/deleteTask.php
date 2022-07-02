@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-class moveTask{
+class deleteTask{
 
 
     public function __construct()
