@@ -48,15 +48,15 @@
     </div>
     <div id="sideBar" class="col row">
         <div class="col overflow-auto scrollbar scrollbar-primary h-75 mb-2" style="overflow-y: scroll; max-height:90vh;">
-            {% for category in notes|keys %}
+            {% for category in notes %}
                 <ul class="list-group mb-2" >
                     <a class="text-decoration-none rounded p-1 bg-primary text-white text-center" data-bs-toggle="collapse" href="#category_{{ loop.index0 }}" role="button" aria-expanded="false" aria-controls="category_{{ loop.index0 }}">
-                        {{ category }}
+                        test
                     </a>
                     <div class="collapse" id="category_{{ loop.index0 }}">
-                        {% for note in notes[category] %}                         
+                        {% for note in category %}                         
                             <!--<a href='/notes/' ~ loop.parent.index0 ~ '/' ~ j class="list-group-item list-group-item-action text-white bg-dark">...</a>-->
-                            <a href='#{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
+                            <a href='/notes/{{ note.getId() }}' class="list-group-item list-group-item-action text-white bg-dark">{{ note.getTitle() }}</a>
                         {% endfor %}
                     </div>
                 </ul>
