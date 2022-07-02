@@ -43,7 +43,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
         ])
         ->add('save', SubmitType::class, array(
             'label' => 'Verschieben',
-            'attr' => array('class' => 'btn btn-secondary')
+            'attr' => array('class' => 'btn btn-primary')
         ))
         ->getForm();
         
