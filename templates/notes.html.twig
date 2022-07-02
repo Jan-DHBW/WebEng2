@@ -153,11 +153,12 @@
             }, 500);
 
             let nextSync = 0;
+            let isQueed = false;
             $("#textEditor").on("input", function () {
                 // set content of preview
                 $("#preview").contents().find('body').html(marked.parse($("#textEditor").val()));
                 if (nextSync < Date.now()) {
-                    nextSync = Date.now() + 1000;
+                    nextSync = Date.now() + 200;
                     $('#topBarSyncedIcon').fadeOut(function () { $('#topBarLoadingSpinner').fadeIn(); });
                     setTimeout(function() {
                         $('#topBarLoadingSpinner').fadeOut(function () { $('#topBarSyncedIcon').fadeIn(); });
