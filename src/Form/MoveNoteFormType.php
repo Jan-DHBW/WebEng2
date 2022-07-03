@@ -43,7 +43,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'choices' => $categories,
             'choice_label' => 'name',
             'choice_value' => 'id',
-            'placeholder' => 'Wähle eine Kategorie',
+            'placeholder' => 'Keine Kategorie',
             'required' => false,
         ])
         ->add('save', SubmitType::class, array(
