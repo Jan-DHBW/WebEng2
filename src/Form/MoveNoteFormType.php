@@ -38,7 +38,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
     $uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
-    $uncat->setName('Unsortiert');
     $categories->add($uncat);
     unset($uncat);
     $builder
