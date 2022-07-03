@@ -33,7 +33,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $categories = $user->getCategories();
     $uncat = new Category();
     $uncat->setName('Uncategorized');
-    array_push($categories, $uncat);
+    $categories->add($uncat);
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
