@@ -127,7 +127,7 @@ class NotesController extends AbstractController
         $content = $currentnote->getContent();
         $invnotes = array();
         $allinviations = $user->getInvitedto();
-        print_r(getype($allinviations));
+        print_r(gettype($allinviations));
         foreach($allinviations as $tmpinv){
                 array_push($invnotes, $tmpinv->getNote());
         }
