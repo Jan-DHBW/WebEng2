@@ -36,7 +36,7 @@ class Note
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="notes")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="notes", nullable=true)
      */
     private $category;
 
