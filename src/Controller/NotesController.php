@@ -186,7 +186,9 @@ class NotesController extends AbstractController
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
             if($movenoteform->get('category')->getData()->getName() == 'Unsortiert'){
                 $note->setCategory(NULL);
+            }else{    
             $note->setCategory($movenote->getcategory());
+            }
             $entityManager->flush();
             // do anything else you need here, like send an email
             $url = $this->generateUrl('notes');
