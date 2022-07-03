@@ -127,8 +127,8 @@ class NotesController extends AbstractController
         $content = $currentnote->getContent();
         $invnotes = array();
         $allinviations = $user->getInvitedto();
-        print_r($allinviations->getValues());
-        foreach($allinviations as $tmpinv){
+       // print_r($allinviations->getValues());
+        foreach($allinviations->getValues() as $tmpinv){
                 array_push($invnotes, $tmpinv->getNote());
         }
         // remove all non base64 characters
