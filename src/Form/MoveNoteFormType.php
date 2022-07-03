@@ -25,7 +25,7 @@ use Doctrine\Persistence\ManagerRegistry;
 class MoveNoteFormType extends AbstractType{
 
 private $security;
-private $manger;
+private $manager;
 public function __construct(Security $security)
 {
     $this->security = $security;
