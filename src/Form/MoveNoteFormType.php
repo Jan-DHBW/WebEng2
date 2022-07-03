@@ -26,6 +26,7 @@ class MoveNoteFormType extends AbstractType{
 
 private $security;
 private $manager;
+
 public function __construct(Security $security, EntityManagerInterface $entityManager)
 {
     $this->security = $security;
@@ -33,10 +34,10 @@ public function __construct(Security $security, EntityManagerInterface $entityMa
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
-    $categories = $user->getCategories();
-    $uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
-    $categories->add($uncat);
-    unset($uncat);
+    //$categories = $user->getCategories();
+    //$uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
+   // $categories->add($uncat);
+    //unset($uncat);
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
