@@ -26,13 +26,10 @@ class MoveNoteFormType extends AbstractType{
 
 private $security;
 private $manager;
-public function __construct(Security $security)
+public function __construct(Security $security, EntityManagerInterface $entityManager)
 {
     $this->security = $security;
-}
-public function createManger(ManagerRegistry $manager)
-{
-    $this->manager = $manager->getManager();
+    $this->manager = $entityManager;
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
