@@ -34,6 +34,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $uncat = new Category();
     $uncat->setName('Unsortiert');
     $categories->add($uncat);
+    unset($uncat);
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
