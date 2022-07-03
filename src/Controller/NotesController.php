@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Security;
 use App\Form\NewNoteFormType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Form\RegistrationFormType;
 use App\Entity\User;
 use App\Entity\Category;
