@@ -32,7 +32,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
     $uncat = new Category();
-    $uncat->setName('Uncategorized');
+    $uncat->setName('Unsortiert');
     $categories->add($uncat);
     $builder
         ->add('category', ChoiceType::class, [
