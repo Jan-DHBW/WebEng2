@@ -184,7 +184,7 @@ class NotesController extends AbstractController
         $movenoteform->handleRequest($request);
         if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
-            if($movenote->getcategory()->getName() == 'Unsortiert'){
+            if($movenote->getcategory()->getName() == 'Uncategorized'){
                 $note->setCategory(NULL);
                 $entityManager->flush();
             }else{    
