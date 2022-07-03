@@ -185,7 +185,12 @@ class NotesController extends AbstractController
         if ($movenoteform->isSubmitted() && $movenoteform->isValid()) {
             $note = $entityManager->getRepository(Note::class)->find($request->get('id'));
             if($movenote->getcategory()->getName() == 'Uncategorized'){
-                $note->setCategory(NULL);
+                $id = $request->get('id');
+                //Create a Database Query to set the category to NULL
+                $query = "UPDATE notes SET category_id = NULL WHERE id = $id";
+                
+                $entityManager->createQuery($query)->execute();
+                //$note->setCategory(NULL);
                 $entityManager->flush();
             }else{    
             $note->setCategory($movenote->getcategory());
