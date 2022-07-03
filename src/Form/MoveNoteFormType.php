@@ -19,19 +19,25 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Doctrine\Persistence\ManagerRegistry;
 
 
 class MoveNoteFormType extends AbstractType{
 
 private $security;
+private $manger;
 public function __construct(Security $security)
 {
     $this->security = $security;
 }
+public function createManger(EntityManagerInterface $manager)
+{
+    $this->manager = $manager;
+}
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
-    $uncat = new Category();
+    $uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
     $uncat->setName('Unsortiert');
     $categories->add($uncat);
     unset($uncat);
