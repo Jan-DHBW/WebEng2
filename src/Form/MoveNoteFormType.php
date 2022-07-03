@@ -36,10 +36,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     
     $categories = $user->getCategories();
-    $uncat = new Category();
-    $uncat->setName('Uncategorized');
-    $categories->add($uncat);
-
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
@@ -48,7 +44,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'choice_label' => 'name',
             'choice_value' => 'id',
             'placeholder' => 'Wähle eine Kategorie',
-            'required' => true,
+            'required' => false,
         ])
         ->add('save', SubmitType::class, array(
             'label' => 'Verschieben',
