@@ -31,6 +31,9 @@ public function __construct(Security $security)
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     $categories = $user->getCategories();
+    $uncat = new Category();
+    $uncat->setName('Uncategorized');
+    array_push($categories, $uncat);
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
