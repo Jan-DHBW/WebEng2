@@ -191,7 +191,7 @@ class NotesController extends AbstractController
                 
                 $entityManager->createQuery($query)->execute();
                 //$note->setCategory(NULL);
-                $entityManager->flush();
+                //$entityManager->flush();
             }else{    
             $note->setCategory($movenote->getcategory());
             $entityManager->flush();
