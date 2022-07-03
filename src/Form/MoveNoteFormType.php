@@ -53,7 +53,6 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'label' => 'Verschieben',
             'attr' => array('class' => 'btn btn-primary')
         ))
-        ->add
         ->getForm();
 }
 public function configureOptions(OptionsResolver $resolver): void
