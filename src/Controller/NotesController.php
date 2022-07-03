@@ -187,7 +187,7 @@ class NotesController extends AbstractController
             if($movenote->getcategory()->getName() == 'Uncategorized'){
                 $id = $request->get('id');
                 //Create a Database Query to set the category to NULL
-                $query = "UPDATE App\Entity\Note SET u.category_id = NULL WHERE id = $id";
+                $query = "UPDATE App\Entity\Note u SET u.category_id = NULL WHERE u.id = $id";
                 
                 $entityManager->createQuery($query)->execute();
                 //$note->setCategory(NULL);
