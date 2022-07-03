@@ -30,9 +30,9 @@ public function __construct(Security $security)
 {
     $this->security = $security;
 }
-public function createManger(EntityManagerInterface $manager)
+public function createManger(ManagerRegistry $manager)
 {
-    $this->manager = $manager;
+    $this->manager = $manager->getManager();
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
