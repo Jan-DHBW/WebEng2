@@ -36,9 +36,10 @@ public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
     
     $categories = $user->getCategories();
-    //$uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
-   // $categories->add($uncat);
-    //unset($uncat);
+    $uncat = new Category();
+    $uncat->setName('Uncategorized');
+    $categories->add($uncat);
+
     $builder
         ->add('category', ChoiceType::class, [
             'label' => false,
