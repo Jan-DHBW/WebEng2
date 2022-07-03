@@ -31,7 +31,7 @@ class NewNoteFormType extends AbstractType{
         $categories = $user->getCategories();
         $uncat = new Category();
         $uncat->setName('Uncategorized');
-        array_push($categories, $uncat);
+        $categories->add($uncat);
         $builder
             ->add('title', TextType::class, array(
                 'label' => 'Titel',
