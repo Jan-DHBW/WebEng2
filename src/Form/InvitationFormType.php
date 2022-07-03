@@ -45,7 +45,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'choices' => $options['invitees'],
             'choice_label' => 'email',
             'choice_value' => 'id',
-            'placeholder' => 'Hier den zu entfrenden Eintrag auswählen',
+            'placeholder' => '<Keinen Benutzer entfernen>',
             'required' => false,
         ))
         ->add('save', SubmitType::class, array(
