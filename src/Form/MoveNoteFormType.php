@@ -34,6 +34,7 @@ public function __construct(Security $security, EntityManagerInterface $entityMa
 }
 public function buildForm(FormBuilderInterface $builder, array $options){
     $user = $this->security->getUser();
+    
     $categories = $user->getCategories();
     //$uncat = $this->$manager->getRepository(Category::class)->findOneBy(array('name' => 'Uncategorized'));
    // $categories->add($uncat);
@@ -52,6 +53,7 @@ public function buildForm(FormBuilderInterface $builder, array $options){
             'label' => 'Verschieben',
             'attr' => array('class' => 'btn btn-primary')
         ))
+        ->add
         ->getForm();
 }
 public function configureOptions(OptionsResolver $resolver): void

@@ -200,6 +200,7 @@ class NotesController extends AbstractController
                 //$entityManager->flush();
             }else{    
             $note->setCategory($movenote->getcategory());
+            unset($movenote);
             $entityManager->flush();
             }
 
