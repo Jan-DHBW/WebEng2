@@ -208,6 +208,7 @@ class NotesController extends AbstractController
             $url = $url.'/'.$request->get('id');
             return $this->redirect($url);
         }   
+        unset($uncat);
         $deletenote = new deleteTask();
         $deletenoteform = $this->createForm(DeleteNoteFormType::class, $deletenote);
         $deletenoteform->handleRequest($request);
