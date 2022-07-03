@@ -126,8 +126,8 @@ class NotesController extends AbstractController
         $currentnote = $entityManager->getRepository(Note::class)->find($request->get('id'));
         $content = $currentnote->getContent();
         $invnotes = array();
-        $allinviations = $user->getInvitedto();
-       // print_r($allinviations->getValues());
+        $allinviations = $user->getInvitedto()->unwrap()->toArray();
+        print_r($allinviations);
         foreach($allinviations->getValues() as $tmpinv){
                 array_push($invnotes, $tmpinv->getNote());
         }
