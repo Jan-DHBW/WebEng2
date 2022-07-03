@@ -57,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $notes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="owner")
+     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="owner",cascade={"persist"})
      */
     private $categories;
 
