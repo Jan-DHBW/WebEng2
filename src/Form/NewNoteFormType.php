@@ -29,9 +29,6 @@ class NewNoteFormType extends AbstractType{
     public function buildForm(FormBuilderInterface $builder, array $options){
         $user = $this->security->getUser();
         $categories = $user->getCategories();
-        $uncat = new Category();
-        $uncat->setName('Uncategorized');
-        $categories->add($uncat);
         $builder
             ->add('title', TextType::class, array(
                 'label' => 'Titel',
